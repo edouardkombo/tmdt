@@ -19,7 +19,7 @@ function updateDatas($scope, $http) {
         for (var key in data) {
             for (var k in data[key]) {
                 if (k === 'picture') {
-                    if (data[key][k].match(/\.(jpeg|jpg|gif|png)$/) === null) {
+                    if ((data[key][k] !== '') && data[key][k].match(/\.(jpeg|jpg|gif|png)$/) === null) {
                         data[key][k] = "";
                     }
                 }
