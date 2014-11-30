@@ -1,4 +1,6 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
+
 require '../config.php';
 
 $origin = filter_input(INPUT_SERVER, 'HTTP_ORIGIN');
@@ -31,7 +33,7 @@ if (isset($method)) {
     $data   = $stmt->execute();
     echo var_dump($data);
     if (is_bool($data) && (true === $data)) {
-        header('Location: http://localhost');
+        header('Location: http://www.themilliondollartalk.com');
     }
 }
 
