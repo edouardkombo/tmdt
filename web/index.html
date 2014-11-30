@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="TheMillionDollarTalk">
+<head>
+    <title>The million dollar talk</title>
+    <meta name="description" content="The Million Dollar Talk - Share special message with someone special and the whole world. The million dollar talk is a bet between two friends whose the goal was to get one million dollar if they let people share special messages to the world..">
+    <meta name="keywords" content="the million dollar talk, million dollar bet, million dollar talk, share messages with the world, share special messages with the world">
+    <meta name="author" content="Edouard Kombo"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <!-- jQuery, Angular -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="http://code.angularjs.org/1.1.5/angular.js" type="text/javascript"></script>
+    <link href='http://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800' rel='stylesheet' type='text/css'/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,700,600,300' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css"/>
+    <!-- AngularStore app -->
+    <script src="js/list/modernizr.custom.js" type="text/javascript"></script>   
+    <script src="js/store.js" type="text/javascript"></script>
+    <script src="js/cart.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/news.js" type="text/javascript"></script>     
+    <script src="js/controller.js" type="text/javascript"></script>
+    <link href="css/font-awesome-4.0.1/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/component.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/style_cube.css"/>
+</head>
+<body>
+    <div class="container">
+        <div class="container-shadow">
+            <a class="logo" href="index.html">
+                <img src="img/logo.png"  alt="logo"/>
+            </a>
+            <h1 class="well">
+                The million dollar talk - <a href='#store' class='btn btn-primary'>Share your own special message</a><br/>
+            </h1>
+            <div ng-view ></div>
+            <div class="row-fluid content-footer">
+                <div class="span12" style="background:#fff;padding:20px;text-align:center;"><p>Copyright © 2014 The million dollar talk. All rights reserved. - <u>Contact:</u> themilliondollartalk@gmail.com</p></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<div ng-app="myApp" id="store" class="content span12" style="overflow: hidden;" ng-controller="AdminController">        
+    <form class="form-search"> 
+        <div class="span12 store-cart-content">
+            <div class="content-store span5" >
+                <a href="index.html#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                    <img src="images/cart.png" alt="" />
+                    <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                </a>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div id="cbp-vm" class="cbp-vm-switcher" ng-class="{true: '', false: 'activegrid'}[isActive]">
+            <ul id="product" class="nav-pills nav-stacked rectangle-list">
+                <li ng-animate="'animate'" ng-repeat="product in pagedItems[currentPage]" >
+                    <img ng-src="images/{{product.src}}" alt="{{product.name}}" /><br />
+
+                    <a class="title" href="#/product"> {{product.name}}  </a>
+
+                    <p class="description"> {{product.description}} </p>
+
+                    <a href="#/cart" ng-hide="cart.getTotalCount() > 0" ng-click="cart.addItem(product.code, product.name, product.price, 1)">
+                       <div class="btn btn-cart">Add cart</div>
+                    </a>
+                    <p class="content_desc"> 
+                            {{product.price | currency}} 
+                            <span ng-show="cart.getTotalCount(product.code) > 0"><i class="fa fa-check"></i>{{cart.getTotalCount(product.code)}}</span>
+                        </p>
+                    <div class="clear"></div>
+              </li> 
+            </ul>
+            <div class="span12 store-cart-content store-cart-footer">
+                <div class="content-store span5" >
+                    <a href="index.html#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                        <img src="images/cart.png" alt="" />
+                        <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                    </a>
+                </div>
+          </div>
+        </div>
+    </form>
+</div>
