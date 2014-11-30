@@ -12,7 +12,7 @@ $_server    = $server['server'];
 $username   = $server['username'];
 $password   = $server['password'];
 $dns        = "mysql:host=$_server;dbname=$database";
-$pdo        = new PDO($dns, $username, $password);
+$pdo        = new PDO($dns, $username, $password, array( PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));
 
 if (!is_object($pdo)) {
     throw new Exception("unable to connect to database");

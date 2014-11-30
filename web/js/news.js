@@ -15,7 +15,6 @@ storeApp.controller('newsController',
 function updateDatas($scope, $http) {
     $http.get("update.php")
     .success(function(data){
-        
         for (var key in data) {
             for (var k in data[key]) {
                 if (k === 'picture') {
