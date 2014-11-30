@@ -174,14 +174,14 @@ shoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
         data["amount_" + ctr] = item.price.toFixed(2);
         data["currency_code"] = "USD";
         data["shipping_1"] = 0;
-        data["return"] =  "http://localhost/specialMessage.php";
+        data["return"] =  "http://www.themilliondollartalk.com/specialMessage.php";
         data["tax_cart"] = ((25 * Math.round((this.getTotalPrice() * 100) / 100)) / 100);
     }
 
     // build form
     var form = $('<form/></form>');
-    form.attr("action", "https://www.paypal.com/cgi-bin/webscr");
-    //form.attr("action", "https://www.sandbox.paypal.com/us/cgi-bin/webscr");
+    //form.attr("action", "https://www.paypal.com/cgi-bin/webscr");
+    form.attr("action", "https://www.sandbox.paypal.com/us/cgi-bin/webscr");
     form.attr("method", "POST");
     form.attr("style", "display:none;");
     this.addFormFields(form, data);
