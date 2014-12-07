@@ -4,7 +4,7 @@
         <div class="clear"></div>
         <div id="cbp-vm" class="cbp-vm-switcher" ng-class="{true: '', false: 'activegrid'}[isActive]">
             <ul id="product" class="nav-pills nav-stacked rectangle-list">
-                <li ng-animate="'animate'" ng-repeat="news in data">
+                <li ng-repeat="news in data">
                     <a href="{{ news.url }}" target="_blank" class="title"> {{news.message}}  </a><br/>
                     <div class="clear"></div>
                     <p ng-show="news.picture.length > 0" class='picture'>

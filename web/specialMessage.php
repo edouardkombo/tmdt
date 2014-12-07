@@ -12,6 +12,23 @@ $allowed = array(
     'https://paypal.com',    
 );
 
+function getTimeBeforePublish($pdo, $selectAllSql, $selectLastSql)
+{
+    $allNew             = $pdo->prepare($selectAllSql);
+    $allNew->execute();
+    $newEntriesNumber   = count($allNew->fetchAll());
+    
+    $lastDuration       = $pdo->prepare($selectLastSql);
+    $lastDuration->execute();
+    $duration           = $lastDuration->fetch();
+    
+    $_duration          = '+1 minute';  
+    $lastAvailableMessageTime = date("Y-m-d H:i:s") - date("Y-m-d H:i:s", strtotime(date($duration['created_at'])." $_duration"));
+    
+    
+    return $time = ceil((($newEntriesNumber * (60+$lastAvailableMessageTime))/3)/60);
+}
+
 if (isset($method)) {
     $message    = filter_input(INPUT_POST, 'message');
     $picture    = filter_input(INPUT_POST, 'picture');
@@ -31,7 +48,6 @@ if (isset($method)) {
         $stmt->bindValue($key, $val, PDO::PARAM_STR);
     }
     $data   = $stmt->execute();
-    echo var_dump($data);
     if (is_bool($data) && (true === $data)) {
         header('Location: http://www.themilliondollartalk.com');
     }
@@ -70,11 +86,12 @@ if (!in_array($origin, $allowed)) {
             </h1>
             <div style='padding:10px;'>
                 <h4>
-                    Write your special message now
+                    Write your megainfo now, it will be show in approximatively <?php echo getTimeBeforePublish($pdo, $selectAllSql, $selectLastSql); ?> minute(s)
                 </h4>
                 <h5 style='background-color:orange;padding:5px;color:#FFFFFF;'>
                     <u>Notice:</u><br/>
-                    Please, this page will be shown only once, do not reload it or your payment will be lost!<br/>
+                    Your message will be shown in approximatively
+                    Please, never reload this page, it will only be launched once! If you reload it your payment will be lost, with no refund.<br/>
                     Be positive, polite, respect international laws and your national laws, share respectful and non pornographic content or your message could be removed with no refund.<br/>
                     After submitting this form you will be automatically redirected to the million dollar talk home page.<br/>
                     Make sure to alert desired people to visit http://themilliondollartalk.com before submitting this form.
@@ -92,7 +109,7 @@ if (!in_array($origin, $allowed)) {
                     <label for='url'>Add a website url, (Only website content that agrees with international laws):</label>
                     <input type='text' name='url'><br/>                    
 
-                    <input type='submit' class='btn btn-default' name='submit' value='Post my special message'>
+                    <input type='submit' class='btn btn-default' name='submit' value='Post my megainfo'>
                 </form>
             </div>
        </div>

@@ -14,7 +14,7 @@ if (count($data) < 3) {
 foreach ($data as $key => $val) {
     $currentDate    = date('Y-m-d H:i:s');
     
-    $duration       = '+2 minutes';  
+    $duration       = '+1 minutes';  
     $_referenceDate = date("Y-m-d H:i:s", strtotime(date($val['created_at'])." $duration"));
     
     $views          = (integer) $val['views'];

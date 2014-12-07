@@ -10,6 +10,10 @@ var storeApp = angular.module('TheMillionDollarTalk', []).
             templateUrl: 'partials/store.htm',
             controller: storeController 
         }).
+        when('/aboutus', {
+            templateUrl: 'partials/aboutus.htm',
+            controller: storeController 
+        }).                
         when('/news', {
             templateUrl: 'partials/news.htm',
             controller: storeController 
@@ -33,7 +37,7 @@ storeApp.filter('startFrom', function () {
     return function (input, start) {
         start = +start; //parse to int
         return input.slice(start);
-    }
+    };
 });
 // create a data service that provides a store and a shopping cart that
 // will be shared by all views (instead of creating fresh ones for each view).

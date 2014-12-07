@@ -8,11 +8,11 @@ function AdminController($scope, $filter) {
         $scope.setMaster = function (section) {
             $scope.selected = section;
             $scope.isActive = !$scope.isActive;
-        }
+        };
 
     $scope.isSelected = function (section) {
         return $scope.selected === section;
-    }
+    };
 
     var myStore = new store();
     $scope.currentPage = 0;
@@ -70,7 +70,7 @@ AdminController.$inject = ['$scope', '$filter'];
 
 function store() {
     this.products = [
-        { num: 1, code: 'TMDT-message', category: 'mac', name: 'A 120 seconds, unique and ephemeral message to share with someone and the world.', src: "social-talk1.jpg", description: 'Announce a wedding, your inconditional love, special greetings to someone or any special event in your life or the life of people you love, wish a merry Christmas, an happy birthday... anything positive. just write your message and tell the desired people to connect to this website, they, with the whole world will see your message at the same time.', price: 1.99, cal: 10 }];
+        { num: 1, code: 'TMDT-message', category: 'mac', name: 'Share a 60 seconds ephemeral message with someone and the world.', src: "social-talk1.jpg", description: 'Announce a special message for someone like, a wedding, your love, a dinner invitation, a special gift for a birthday (in image), a travel invitation, a job offer... anything positive, be imaginative. Just write your message and tell the desired people to connect to this website, they, with the whole world will see your message at the same time.', price: 1.99, cal: 10 }];
      
 }
 
@@ -83,18 +83,18 @@ function detailsprod() {
 
 store.prototype.getProduct = function (code) {
     for (var i = 0; i < this.products.length; i++) {
-        if (this.products[i].code == code)
+        if (this.products[i].code === code)
             return this.products[i];
     }
     
     return null;
-}
+};
 detailsprod.prototype.getDetail = function (code) {
     for (var i = 0; i < this.details.length; i++) {
-        if (this.details[i].id == code)
+        if (this.details[i].id === code)
             
             return this.details[i];
         
     }
     return null;
-}
+};
