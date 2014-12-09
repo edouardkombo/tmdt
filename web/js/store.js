@@ -70,7 +70,7 @@ AdminController.$inject = ['$scope', '$filter'];
 
 function store() {
     this.products = [
-        { num: 1, code: 'TMDT-message', category: 'mac', name: 'Share a 60 seconds ephemeral message with someone and the world.', src: "social-talk1.jpg", description: 'Announce a special message for someone like, a wedding, your love, a dinner invitation, a special gift for a birthday (in image), a travel invitation, a job offer... anything positive, be imaginative. Just write your message and tell the desired people to connect to this website, they, with the whole world will see your message at the same time.', price: 1.99, cal: 10 }];
+        { num: 1, code: 'TMDT-message', category: 'mac', name: 'Share a 60 seconds ephemeral message with someone and the world.', src: "social-talk1.jpg", description: 'Announce a special message for someone like, a wedding, your love, a dinner invitation, a special gift for a birthday (in image), a travel invitation, a job offer... anything positive, be imaginative. Just write your message and tell the desired people to connect to this website, they, with the whole world will see your message at the same time.', price: 0.99, cal: 10 }];
      
 }
 
