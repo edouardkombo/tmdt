@@ -53,9 +53,9 @@ if (isset($method)) {
     }
 }
 
-if (!in_array($origin, $allowed)) {
+/*if (!in_array($origin, $allowed)) {
     throw new \Exception('You are not authorized to use this link!');
-}
+}*/
 ?>
 <!doctype html>
 <html ng-app="TheMillionDollarTalk">
@@ -86,14 +86,11 @@ if (!in_array($origin, $allowed)) {
             </h1>
             <div style='padding:10px;'>
                 <h4>
-                    Write your megainfo now, it will be show in approximatively <?php echo getTimeBeforePublish($pdo, $selectAllSql, $selectLastSql); ?> minute(s)
+                    Write your ephemeral message now, it will be shown in approximatively <?php echo getTimeBeforePublish($pdo, $selectAllSql, $selectLastSql); ?> minute(s)
                 </h4>
                 <h5 style='background-color:orange;padding:5px;color:#FFFFFF;'>
                     <u>Notice:</u><br/>
-                    Your message will be shown in approximatively
-                    Please, never reload this page, it will only be launched once! If you reload it your payment will be lost, with no refund.<br/>
-                    Be positive, polite, respect international laws and your national laws, share respectful and non pornographic content or your message could be removed with no refund.<br/>
-                    After submitting this form you will be automatically redirected to the million dollar talk home page.<br/>
+                    Be positive, polite, respect international laws and your country laws, share respectful and non pornographic content or you could be banned.<br/>
                     Make sure to alert desired people to visit http://themilliondollartalk.com before submitting this form.
                 </h5>
                 <form method="POST" action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF'); ?>">
