@@ -86,12 +86,12 @@ if (isset($method)) {
             </h1>
             <div style='padding:10px;'>
                 <h4>
-                    Write your ephemeral message now, it will be shown in approximatively <?php echo getTimeBeforePublish($pdo, $selectAllSql, $selectLastSql); ?> minute(s)
+                    Write your free ephemeral MDM (Million Dollar Message) now, it will be shown in approximatively <?php echo getTimeBeforePublish($pdo, $selectAllSql, $selectLastSql); ?> minute(s)
                 </h4>
                 <h5 style='background-color:orange;padding:5px;color:#FFFFFF;'>
                     <u>Notice:</u><br/>
                     Be positive, polite, respect international laws and your country laws, share respectful and non pornographic content or you could be banned.<br/>
-                    Make sure to alert desired people to visit http://themilliondollartalk.com before submitting this form.
+                    Make sure to alert desired people to see your message by visiting http://themilliondollartalk.com homepage.
                 </h5>
                 <form method="POST" action="<?php echo filter_input(INPUT_SERVER, 'PHP_SELF'); ?>">
                     <label for='username'>Your nickname:</label>
@@ -106,7 +106,7 @@ if (isset($method)) {
                     <label for='url'>Add a website url, (Only website content that agrees with international laws):</label>
                     <input type='text' name='url'><br/>                    
 
-                    <input type='submit' class='btn btn-default' name='submit' value='Post my megainfo'>
+                    <input type='submit' class='btn btn-default' name='submit' value='Post my MDM'>
                 </form>
             </div>
        </div>
