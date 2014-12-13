@@ -43,7 +43,11 @@
             <!-- <a href='specialMessage.php' class='btn btn-primary'>Post your anonymous million dollar message now!</a> -->
             <h1 class="well">
                 #TheMillionDollarTalk<br/><span class='subtitle'>Tell your last #sexperience in real time!</span>                
-            </h1>
+            </h1><br/>
+            <form name='postMdm' method='post'>
+                <input type='text' name='mdm' id='mdm' class='mdmText' placeholder='Write your sexperience including the localization (ex: #paris) and your nickname (ex: @ana)' value=''><br/>
+                <input type='submit' class='btn btn-danger' value='Post my million dollar sexperience'>
+            </form>
             <div ng-view ></div>
             <div class="row-fluid content-footer">
                 <div class="span12" style="background:#fff;text-align:center;">
