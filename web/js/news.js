@@ -8,22 +8,37 @@ storeApp.controller('newsController',
             updateDatas($scope, $http);
             $timeout(countUp, 10000);
         };
-        //$timeout(countUp, 10000);        
+        $timeout(countUp, 10000);
+        
+        // create a blank object to hold our form information
+        // $scope will allow this to pass between controller and view
+        $scope.formData = {};
+
+        // process the form
+        $scope.processForm = function() {
+            $http({
+                method  : 'POST',
+                url     : 'process.php',
+                data    : $.param($scope.formData),  // pass in data as strings
+                headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+            })
+            .success(function(data) {
+                var result = eval('('+data+')');
+                console.log(result);
+                if (!result.success) {
+                    $scope.errorName = result.errors.name;
+                } else {
+                    $scope.message = result.message;
+                    $scope.formData.mdm = null;
+                }
+            });
+        };        
     }]
 );
 
 function updateDatas($scope, $http) {
     $http.get("update.php")
     .success(function(data){
-        for (var key in data) {
-            for (var k in data[key]) {
-                if (k === 'picture') {
-                    if ((data[key][k] !== null) && data[key][k].match(/\.(jpeg|jpg|gif|png)$/) === null) {
-                        data[key][k] = "";
-                    }
-                }
-            }
-        }
         $scope.data = data;
     })
     .error(function() {

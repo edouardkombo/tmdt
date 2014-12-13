@@ -25,4 +25,4 @@ $selectAllSql   = "SELECT id FROM tmdt.posts WHERE ended_at IS NULL ORDER BY id 
 $selectLastSql  = "SELECT created_at FROM tmdt.posts WHERE ended_at IS NOT NULL ORDER BY id DESC LIMIT 0,1";
 $helpSelectSql  = "SELECT * FROM tmdt.posts ORDER BY id DESC LIMIT 0,$limit";
 $updateSql      = "UPDATE tmdt.posts SET views=:views,shown_at=:shownAt,ended_at=:endedAt WHERE id=:id";
-$insertSql      = "INSERT INTO tmdt.posts SET username=:username,message=:message,picture=:picture,url=:url,created_at=:createdAt";
+$insertSql      = "INSERT INTO tmdt.posts SET message=:message,created_at=:createdAt";
