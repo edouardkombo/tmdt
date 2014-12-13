@@ -8,7 +8,7 @@ storeApp.controller('newsController',
             updateDatas($scope, $http);
             $timeout(countUp, 10000);
         };
-        $timeout(countUp, 10000);        
+        //$timeout(countUp, 10000);        
     }]
 );
 

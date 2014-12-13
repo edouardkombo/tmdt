@@ -18,9 +18,11 @@ if (!is_object($pdo)) {
     throw new Exception("unable to connect to database");
 }
 
-$selectSql      = "SELECT * FROM tmdt.posts WHERE ended_at IS NULL ORDER BY id DESC LIMIT 0,3";
+$limit = 3;
+
+$selectSql      = "SELECT * FROM tmdt.posts WHERE ended_at IS NULL ORDER BY id DESC LIMIT 0,$limit";
 $selectAllSql   = "SELECT id FROM tmdt.posts WHERE ended_at IS NULL ORDER BY id DESC";
 $selectLastSql  = "SELECT created_at FROM tmdt.posts WHERE ended_at IS NOT NULL ORDER BY id DESC LIMIT 0,1";
-$helpSelectSql  = "SELECT * FROM tmdt.posts ORDER BY id DESC LIMIT 0,3";
+$helpSelectSql  = "SELECT * FROM tmdt.posts ORDER BY id DESC LIMIT 0,$limit";
 $updateSql      = "UPDATE tmdt.posts SET views=:views,shown_at=:shownAt,ended_at=:endedAt WHERE id=:id";
 $insertSql      = "INSERT INTO tmdt.posts SET username=:username,message=:message,picture=:picture,url=:url,created_at=:createdAt";
