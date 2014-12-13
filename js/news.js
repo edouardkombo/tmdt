@@ -23,7 +23,7 @@ storeApp.controller('newsController',
                 headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
             })
             .success(function(data) {
-                var result = eval('('+data+')');
+                var result = JSON.parse(data);
                 console.log(result);
                 if (!result.success) {
                     $scope.errorName = result.errors.name;

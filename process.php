@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 
-require '../config.php';
+require 'config.php';
 
 $origin = filter_input(INPUT_SERVER, 'HTTP_ORIGIN');
 $method = filter_input(INPUT_POST, 'mdm');
@@ -40,6 +40,6 @@ if (isset($method)) {
 
 $timeToPublish = getTimeBeforePublish($pdo, $selectAllSql, $selectLastSql);
 $messageReturn = "Your message will be posted in approximatively $timeToPublish minute(s)";
-$jsonResult = "{'success':{'message':$messageReturn}}";
+$jsonResult = "{'success':'1', 'message':'$messageReturn'}";
 $jsonError  = "{'errors':{'name':'Une erreur s'est produite!}}";
 echo json_decode($jsonResult);

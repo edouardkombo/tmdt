@@ -1,5 +1,5 @@
 <?php
-require '../config.php';
+require 'config.php';
 
 $stmt   = $pdo->prepare($selectSql);
 $stmt->execute();
