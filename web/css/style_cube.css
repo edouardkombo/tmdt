@@ -29,7 +29,21 @@ body{
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-    }
+    line-height: 5px;
+}
+
+a.mainLink{
+    text-decoration: none;
+    color:#000;
+}
+a.mainLink:hover{
+    text-decoration: none;
+    color:#000;    
+}
+
+form {
+    margin: 0 0 0 10px;
+}
 
 a:hover {
     color: #fff;

@@ -42,10 +42,10 @@
         <div class="container-shadow">
             <!-- <a href='specialMessage.php' class='btn btn-primary'>Post your anonymous million dollar message now!</a> -->
             <h1 class="well">
-                #TheMillionDollarTalk<br/><span class='subtitle'>Tell your last #sexperience in real time!</span>                
+                <a href='#/news' class='mainLink'>#TheMillionDollarTalk</a><br/><span class='subtitle'>Tell your last #sexperience in real time!</span>                
             </h1><br/>
             <form name='postMdm' method='post'>
-                <input type='text' name='mdm' id='mdm' class='mdmText' placeholder='Write your sexperience including the localization (ex: #paris) and your nickname (ex: @ana)' value=''><br/>
+                <textarea name='mdm' id='mdm' class='mdmText' placeholder='Write your sexperience including the localization (ex: #paris) and your nickname (ex: @ana)'></textarea><br/>
                 <input type='submit' class='btn btn-danger' value='Post my million dollar sexperience of the day'>
             </form>
             <div ng-view ></div>
@@ -53,8 +53,7 @@
                 <div class="span12" style="background:#fff;text-align:center;">
                     <p style="text-align:center;">
                         Copyright © 2014 TMDT. All rights reserved.
-                        - <a href='#aboutus'><u>Our history</u></a>
-                        - <u>Contact:</u> themilliondollartalk@gmail.com
+                        - <a href='#aboutus'><u>Us</u></a>
                         <span class="fb-share-button float-left" data-href="http://www.themilliondollartalk.com" data-layout="button"></span>
                         <a class="twitter-share-button float-left marginLeft15" href="https://twitter.com/share">Tweet</a>                                         
                     </p>
