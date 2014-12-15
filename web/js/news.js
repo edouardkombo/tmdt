@@ -37,13 +37,14 @@ storeApp.controller('newsController',
 );
 
 function updateDatas($scope, $http) {
-    $http.get("update.php")
+    $http.post('process.php', {'action':'update'})
     .success(function(data){
+        console.log(data);
         $scope.data = data;
     })
     .error(function() {
         $scope.data = "error in fetching data";
-    });    
+    });        
 }
 
 

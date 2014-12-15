@@ -7,23 +7,23 @@ var storeApp = angular.module('TheMillionDollarTalk', []).
     config(['$routeProvider', function($routeProvider) {
     $routeProvider.
         when('/store', {
-            templateUrl: '../partials/store.htm',
+            templateUrl: 'partials/store.htm',
             controller: storeController 
         }).
         when('/aboutus', {
-            templateUrl: '../partials/aboutus.htm',
+            templateUrl: 'partials/aboutus.htm',
             controller: storeController 
         }).                
         when('/news', {
-            templateUrl: '../partials/news.htm',
+            templateUrl: 'partials/news.htm',
             controller: storeController 
         }).              
         when('/products/:productCode', {
-            templateUrl: '../partials/product.htm',
+            templateUrl: 'partials/product.htm',
             controller: storeController
         }).
         when('/cart', {
-            templateUrl: '../partials/shoppingCart.htm',
+            templateUrl: 'partials/shoppingCart.htm',
             controller: storeController
         }).
         otherwise({
