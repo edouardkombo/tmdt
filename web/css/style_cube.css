@@ -26,7 +26,6 @@ body{
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
-    line-height: 5px;
 }
 
 a.mainLink{
@@ -297,6 +296,8 @@ button.flr-top {
     border-radius: 0px 0 0 0px;
 }
 input, textarea, .uneditable-input{width:100%;}
+
+textarea { margin-bottom: 5px; }
 
 .search-query:placeholder {
     color: #222222;
