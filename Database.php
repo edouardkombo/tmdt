@@ -10,7 +10,7 @@ class Database {
         'database'  => 'tmdt',
         'server'    => 'localhost',
         'username'  => 'root',
-        'password'  => 'root',
+        'password'  => '',
         'verbose'   => false        
     );
 }

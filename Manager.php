@@ -126,8 +126,8 @@ class Manager extends Database{
     public function getPostVars()
     {
         $this->postedMessage    = filter_input(INPUT_POST, 'mdm');
-        $this->action           = filter_input(INPUT_POST, 'action');
-        
+        $this->action           = filter_input(INPUT_POST, 'action'); 
+
         return (boolean) true;
     }        
     
@@ -215,11 +215,12 @@ class Manager extends Database{
         
         $origin     = filter_input(INPUT_SERVER, 'HTTP_ORIGIN');
         $accepts    = array('http://localhost:8080', 'http://localhost',
-            'http://www.themilliondollartalk');
+            'http://www.themilliondollartalk.com');
+
         if (!in_array($origin, $accepts) OR ($this->action === NULL)) {
             $this->triggerError();
         }
-        
+
         return (boolean) $this->error;
     }
     
@@ -235,27 +236,17 @@ class Manager extends Database{
                 $this->update();
             }
 
-            $datas = "{'success': 1, {"
-                    . "'message':$this->resultMessage, "
-                    . "'datas':";
-            
-            $count = 0;
-            foreach($this->resultDatas as $key => $val) {
-                $datas .= "{'$key': {";
-                foreach ($val as $k => $value) {
-                    $count++;
-                    $datas .= (count($val)===($count)) ? "'$k':'$value'" : "'$k':'$value',";
-                }
-                $count =0;
-                $datas .= (count($this->resultDatas)===($key+1)) ? "}" : "},";
-            }
-            $datas .= "}";
+            $datas = array('success' => array(
+                'message'=>$this->resultMessage,
+                'datas' => $this->resultDatas
+            ));
             
         } else {
             $this->triggerError();
-            $datas = "{'error': 1, {"
-                    . "'message':$this->resultMessage, "
-                    . "'datas':$this->resultDatas}}";            
+            $datas = array('error' => array(
+                'message'   => $this->resultMessage,
+                'datas'     => ''
+            ));                      
         }
         print json_encode($datas);
     }
@@ -301,13 +292,13 @@ class Manager extends Database{
         $stmt   = $this->pdo->prepare($selectSql);
         $stmt->execute();
         $data   = $stmt->fetchAll();
-        
+
         if (count($data) < 3) {
             $stmt   = $this->pdo->prepare($lastThreeSql);
             $stmt->execute();
             $data   = $stmt->fetchAll();    
         }
-        
+
         foreach ($data as $key => $val) {
             $currentDate    = date('Y-m-d H:i:s');
 

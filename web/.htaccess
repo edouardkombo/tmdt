@@ -1,0 +1,38 @@
+RewriteEngine on
+DirectoryIndex index.html index.htm default.htm index.php index.php3 index.phtml index.php5 index.shtml mwindex.phtml
+Options -Indexes
+
+AddDefaultCharset utf-8
+
+# Apache 2.0
+SetOutputFilter DEFLATE
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/x-javascript
+
+# Compression pour fichiers JS
+<IfModule mod_gzip.c>
+    mod_gzip_on       Yes
+    mod_gzip_dechunk  Yes
+    mod_gzip_minimum_file_size 512
+    mod_gzip_maximum_file_size 1000000
+    mod_gzip_item_include file \.js$
+    mod_gzip_item_include mime ^application/x-javascript.*
+</IfModule>
+
+# Cache
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType application/x-javascript "access plus 2 month"
+    ExpiresByType application/javascript "access plus 2 month"
+    ExpiresByType text/javascript "access plus 2 month"
+    ExpiresDefault "access plus 1 month"
+    ExpiresByType text/css "access plus 1 day"
+    ExpiresByType image/png "access plus 1 week"
+    ExpiresByType image/gif "access plus 1 week"
+    ExpiresByType image/jpeg "access plus 1 week"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|xml|gz|json)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
+</IfModule>

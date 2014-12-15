@@ -12,39 +12,60 @@ storeApp.controller('newsController',
         
         // create a blank object to hold our form information
         // $scope will allow this to pass between controller and view
-        $scope.formData = {};
-
+        $scope.formData     = {action: 'insert', resultStatus: false};
+        
         // process the form
         $scope.processForm = function() {
+            $scope.formData.thisForm = true;
+            //$scope.formResult.result = false; 
             $http({
                 method  : 'POST',
                 url     : 'process.php',
-                data    : $.param($scope.formData),  // pass in data as strings
+                data    : $.param($scope.formData),
                 headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
             })
             .success(function(data) {
-                var result = JSON.parse(data);
-                console.log(result);
-                if (!result.success) {
-                    $scope.errorName = result.errors.name;
+                if (!data.success) {
+                    $scope.formData.resultStatus    = false;                    
+                    $scope.result                   = data.error.message;
                 } else {
-                    $scope.message = result.message;
-                    $scope.formData.mdm = null;
+                    $scope.formData.mdm             = null;
+                    $scope.formData.resultStatus    = true;                    
+                    $scope.result                   = data.success.message; 
                 }
+                
+            }).error(function(data) {
+                console.log(data);
             });
         };        
     }]
 );
 
+
+
 function updateDatas($scope, $http) {
-    $http.post('process.php', {'action':'update'})
-    .success(function(data){
-        console.log(data);
-        $scope.data = data;
+    var datas = {action: 'update'};
+    $http({
+        method  : 'POST',
+        url     : 'process.php',
+        data    : $.param(datas),      
+        headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
     })
-    .error(function() {
-        $scope.data = "error in fetching data";
-    });        
+    .success(function(data){
+        if (!data.success) {
+            $scope.data = data.success.datas;
+        } else {
+            $scope.data = data.success.datas;
+        }
+        $scope.result = null;
+        $scope.formData.thisForm = false;
+    })
+    .error(function(data) {
+        $scope.data = "error in fetching datas";
+        $scope.result = null;
+        $scope.formData.thisForm = false;
+    });  
+        
 }
 
 
