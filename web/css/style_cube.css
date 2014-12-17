@@ -345,16 +345,16 @@ textarea {
     font-size: 18px;
 }
 textarea::-webkit-input-placeholder { /* WebKit browsers */
-    color:#FFFFFF;
+    color:#808080;
 }
 textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:#FFFFFF;
+    color:#808080;
 }
 textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:#FFFFFF;
+    color:#808080;
 }
 textarea:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:#FFFFFF;
+    color:#808080;
 }
 
 .search-query:placeholder {
