@@ -18,6 +18,7 @@
 
 
 body{
+    background:url('../images/sex3.jpg') no-repeat;    
     -webkit-background-size: 100%; 
     -moz-background-size: 100%; 
     -o-background-size: 100%; 
@@ -94,6 +95,11 @@ a:hover {
     opacity: 1;
     height: 30px;
 }
+.container {
+    background:#FFF;
+    padding: 5px;
+}
+
 .container .well{
     margin-left:auto;
     margin-right:auto;
@@ -297,7 +303,7 @@ button.flr-top {
 }
 input, textarea, .uneditable-input{width:100%;}
 
-textarea { margin-bottom: 5px; }
+textarea { width: 80%; margin-bottom: 5px; }
 
 .search-query:placeholder {
     color: #222222;
