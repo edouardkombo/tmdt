@@ -1,7 +1,7 @@
 <div ng-app="myApp" id="store" class="content span12" style="overflow: hidden;" ng-controller="newsController">
     <br/>
     <form ng-submit="processForm()">
-        <textarea id='mdm' name="mdm" ng-model="formData.mdm" class='mdmText' placeholder='Share anonymously your last sex memory. Use hashtags to target a subject (ex: #schoolx) and @ to tag your nickname.'></textarea><br/>
+        <textarea id='mdm' name="mdm" ng-model="formData.mdm" class='mdmText' placeholder='Share anonymously your last sex memory with hashtags.'></textarea><br/>
         <input type='submit' class='btn btn-danger' ng-disabled="formData.thisForm" value='Post my free million dollar talk NOW'>
         <span id="result" name="result" ng-model="formData.resultStatus" ng-class="{true:'formSuccess', false:'formError'}[formData.resultStatus]">{{ result }}</span>
     </form>
