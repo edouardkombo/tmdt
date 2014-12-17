@@ -22,7 +22,8 @@ storeApp.controller('newsController',
             console.log($scope.formData.mdm);
             if (!$scope.formData.mdm) {
                 $scope.formData.resultStatus    = false;                    
-                $scope.result                   = "You must write an experience in the black field first!";                
+                $scope.result                   = "You must write a content in the above field first!";
+                document.getElementById("mdm").focus();
             } else {
                 $http({
                     method  : 'POST',
