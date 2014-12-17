@@ -10,7 +10,7 @@ require '../Manager.php';
 
 $manager = new Manager();
 $manager->connect();
-$manager->setLimit(3);
+$manager->setLimit(20);
 $manager->setSuccessMessage('Your message will be published in less than %d minute(s)');
 $manager->setErrorMessage('Unable to deliver your message, please try again!');
 $manager->getPostVars();
