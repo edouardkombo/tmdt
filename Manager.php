@@ -214,7 +214,7 @@ class Manager extends Database{
         $this->getTimeBeforePublish();
         
         $origin     = filter_input(INPUT_SERVER, 'HTTP_ORIGIN');
-        $accepts    = array('http://localhost:8080', 'http://localhost',
+        $accepts    = array('http://localhost:8080', 'http://localhost', NULL,
             'http://www.themilliondollartalk.com');
 
         if (!in_array($origin, $accepts) OR ($this->action === NULL)) {
@@ -245,9 +245,10 @@ class Manager extends Database{
             $this->triggerError();
             $datas = array('error' => array(
                 'message'   => $this->resultMessage,
-                'datas'     => ''
+                'datas'     => array()
             ));                      
         }
+
         print json_encode($datas);
     }
     
