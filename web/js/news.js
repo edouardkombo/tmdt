@@ -1,6 +1,8 @@
 
 storeApp.controller('newsController', 
     ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+        //Focus on element
+        document.getElementById("mdm").focus();
         updateDatas($scope, $http);
         
         var countUp;
@@ -17,26 +19,31 @@ storeApp.controller('newsController',
         // process the form
         $scope.processForm = function() {
             $scope.formData.thisForm = true;
-            //$scope.formResult.result = false; 
-            $http({
-                method  : 'POST',
-                url     : 'process.php',
-                data    : $.param($scope.formData),
-                headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
-            })
-            .success(function(data) {
-                if (!data.success) {
-                    $scope.formData.resultStatus    = false;                    
-                    $scope.result                   = data.error.message;
-                } else {
-                    $scope.formData.mdm             = null;
-                    $scope.formData.resultStatus    = true;                    
-                    $scope.result                   = data.success.message; 
-                }
-                
-            }).error(function(data) {
-                console.log(data);
-            });
+            console.log($scope.formData.mdm);
+            if (!$scope.formData.mdm) {
+                $scope.formData.resultStatus    = false;                    
+                $scope.result                   = "You must write an experience in the black field first!";                
+            } else {
+                $http({
+                    method  : 'POST',
+                    url     : 'process.php',
+                    data    : $.param($scope.formData),
+                    headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
+                })
+                .success(function(data) {
+                    if (!data.success) {
+                        $scope.formData.resultStatus    = false;                    
+                        $scope.result                   = data.error.message;
+                    } else {
+                        $scope.formData.mdm             = null;
+                        $scope.formData.resultStatus    = true;                    
+                        $scope.result                   = data.success.message; 
+                    }
+
+                }).error(function(data) {
+                    console.log(data);
+                });
+            }
         };        
     }]
 );

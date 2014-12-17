@@ -17,8 +17,7 @@
     /* 05 - MEDIA QUERIES */
 
 
-body{
-    background:url('../images/sex3.jpg') no-repeat;    
+body{  
     -webkit-background-size: 100%; 
     -moz-background-size: 100%; 
     -o-background-size: 100%; 
@@ -27,6 +26,40 @@ body{
       -moz-background-size: cover;
       -o-background-size: cover;
       background-size: cover;
+}
+
+#header {
+    background-color:#0088cc;
+    padding: 5px;
+    width: 100%;
+    height: 20px;
+    top: 0;
+    bottom: auto;
+    display: block;
+    position: relative;
+}
+#logo{
+    font-family: 'quicksand regular', Sans-Serif;
+    text-transform: none;
+    font-weight:bold;    
+    color:#FFF;
+    float:left;
+}
+#logo a{
+    color:#FFF;
+    text-decoration:none;
+    font-family: 'quicksand regular', Sans-Serif;
+}
+#logo a:hover{
+    text-decoration:none;
+}
+
+#social{
+    float: right;
+}
+
+a.aboutus:hover{
+    color:#0088cc;
 }
 
 a.mainLink{
@@ -97,7 +130,6 @@ a:hover {
 }
 .container {
     background:#FFF;
-    padding: 5px;
 }
 
 .container .well{
@@ -169,8 +201,8 @@ button.flr-top {
     } 
 
 .nav-pills li {
-    margin-top: 0px;
-    background-color:#FFFFFF;
+    margin-top: 10px;
+    background-color:#F5F5DC;
 }
 
 .nav-pills li .picture {
@@ -303,7 +335,27 @@ button.flr-top {
 }
 input, textarea, .uneditable-input{width:100%;}
 
-textarea { width: 80%; margin-bottom: 5px; }
+textarea {
+    font-family: 'quicksand regular', Sans-Serif;
+    background-color:#000;
+    color:#FFFFFF;
+    width: 100%;
+    height: 80px;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+textarea::-webkit-input-placeholder { /* WebKit browsers */
+    color:#FFFFFF;
+}
+textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#FFFFFF;
+}
+textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#FFFFFF;
+}
+textarea:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:#FFFFFF;
+}
 
 .search-query:placeholder {
     color: #222222;
