@@ -2,7 +2,7 @@
     <br/>
     <form ng-submit="processForm()">
         <textarea id='mdm' name="mdm" ng-model="formData.mdm" class='mdmText' placeholder='Share a sex experience or sex thoughts about someone (friend, colleague...). Sign your #TMDT with a nickame ex: (@marco)'></textarea><br/>
-        <input type='submit' class='btn btn-danger' ng-disabled="formData.thisForm" value='Post my free #TMDT NOW'><br/>
+        <input type='submit' class='btn btn-danger' ng-disabled="formData.thisForm" value='Share my free #TMDT NOW'><br/>
         <span id="result" name="result" ng-model="formData.resultStatus" ng-class="{true:'formSuccess', false:'formError'}[formData.resultStatus]">{{ result }}</span>
     </form>
     <form class="form-search"> 
