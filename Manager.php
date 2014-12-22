@@ -60,7 +60,19 @@ class Manager extends Database{
      *
      * @var string 
      */
-    protected $hasEmptyMessage;    
+    protected $hasEmptyMessage;
+    
+    /**
+     *
+     * @var string 
+     */
+    protected $noSexMessage;
+    
+    /**
+     *
+     * @var string 
+     */
+    protected $noAgeMessage;    
     
     /**
      *
@@ -174,6 +186,28 @@ class Manager extends Database{
     public function setHasEmptyMessage($message)
     {
         return $this->hasEmptyMessage = (string) $message;
+    }
+    
+    /**
+     * Set no sex message
+     * 
+     * @param  string $message Success message
+     * @return string
+     */
+    public function setNoSexMessage($message)
+    {
+        return $this->noSexMessage = (string) $message;
+    }
+    
+    /**
+     * Set no age message
+     * 
+     * @param  string $message Success message
+     * @return string
+     */
+    public function setNoAgeMessage($message)
+    {
+        return $this->noAgeMessage = (string) $message;
     }    
     
     /**
@@ -315,8 +349,17 @@ class Manager extends Database{
                 $this->error    = true;
             }
             if (!preg_match('[@]',$this->postedMessage)) {            
-                $message       .= $this->atSemanticMessage;                
+                $message       .= $this->atSemanticMessage."\r\n";                
                 $this->error    = true;
+            } else {
+                if (!preg_match('[@male|@female|@man|@woman]',$this->postedMessage)) {            
+                    $message       .= $this->noSexMessage."\r\n";                
+                    $this->error    = true;
+                }
+                if (!preg_match('~@[0-9]~', $this->postedMessage)) {            
+                    $message       .= $this->noAgeMessage."\r\n";                
+                    $this->error    = true;
+                }                
             }
         }    
         

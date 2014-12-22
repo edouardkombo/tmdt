@@ -1,7 +1,7 @@
 <div ng-app="myApp" id="store" class="content span12"ng-controller="newsController">
     <br/>
     <form ng-submit="processForm()">
-        <textarea id='mdm' name="mdm" ng-model="formData.mdm" class='mdmText' placeholder='Write your detailed experience here, hashtag the location, the company or school, the liberal profession, and end up with your "@pseudo, @sex, @age"... DO NOT MENTION REAL NAMES, EMAILS OR PHONE NUMBERS, ANONYMITY IS THE RULE.'></textarea><br/>
+        <textarea id='mdm' name="mdm" ng-model="formData.mdm" class='mdmText' placeholder='Write your detailed experience here, hashtag the location, the company or school, the liberal profession, and end up with your "@pseudo, @gender, @age"... DO NOT MENTION REAL NAMES, EMAILS OR PHONE NUMBERS, ANONYMITY IS THE RULE.'></textarea><br/>
         <input type='submit' class='btn btn-danger' ng-disabled="formData.thisForm" value='I click here to share my experience and contribute to next publishing'><br/>
         <span id="result" name="result" ng-model="formData.resultStatus" ng-class="{true:'formSuccess', false:'formError'}[formData.resultStatus]">{{ result }}</span>
     </form>

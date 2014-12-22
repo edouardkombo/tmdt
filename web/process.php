@@ -15,6 +15,8 @@ $manager->setSuccessMessage('Your message will be published in less than %d minu
 $manager->setErrorMessage('Unable to deliver your message, please try again!');
 $manager->setHashtagSemanticMessage('You must hashtag at least one object or one place (ex: #Paris)!');
 $manager->setAtSemanticMessage('You must define your pseudo at the end your story (ex: @Marc277)!');
+$manager->setNoSexMessage('You must specify your gender (ex: @female, @male)!');
+$manager->setNoAgeMessage('You must specify your age (ex: @28)!');
 $manager->setHasEmptyMessage('You must write yout story in the text field first!');
 $manager->getPostVars();
 $manager->csrfProtect();
