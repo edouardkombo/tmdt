@@ -42,7 +42,25 @@ class Manager extends Database{
      *
      * @var string 
      */
-    protected $postedMessage;     
+    protected $postedMessage; 
+    
+    /**
+     *
+     * @var string 
+     */
+    protected $hashtagSemanticMessage;
+    
+    /**
+     *
+     * @var string 
+     */
+    protected $atSemanticMessage;
+    
+    /**
+     *
+     * @var string 
+     */
+    protected $hasEmptyMessage;    
     
     /**
      *
@@ -55,6 +73,13 @@ class Manager extends Database{
      * @var boolean 
      */
     protected $error = false;    
+    
+
+    /**
+     *
+     * @var array 
+     */
+    protected $jsonDatas = array();    
     
     /**
      * Constructor
@@ -116,6 +141,39 @@ class Manager extends Database{
     public function setErrorMessage($message)
     {
         return $this->errorMessage = (string) $message;
+    }
+    
+    /**
+     * Set hashtag semantic message
+     * 
+     * @param  string $message Success message
+     * @return string
+     */
+    public function setHashtagSemanticMessage($message)
+    {
+        return $this->hashtagSemanticMessage = (string) $message;
+    }    
+    
+    /**
+     * Set at semantic message
+     * 
+     * @param  string $message Success message
+     * @return string
+     */
+    public function setAtSemanticMessage($message)
+    {
+        return $this->atSemanticMessage = (string) $message;
+    }
+    
+    /**
+     * Set has empty message
+     * 
+     * @param  string $message Success message
+     * @return string
+     */
+    public function setHasEmptyMessage($message)
+    {
+        return $this->hasEmptyMessage = (string) $message;
     }    
     
     /**
@@ -217,10 +275,57 @@ class Manager extends Database{
         $accepts    = array('http://localhost:8080', 'http://localhost', NULL,
             'http://www.themilliondollartalk.com');
 
-        if (!in_array($origin, $accepts) OR ($this->action === NULL)) {
+        if (!in_array($origin, $accepts) OR ($this->action === NULL)) {        
             $this->triggerError();
         }
 
+        return (boolean) $this->error;
+    }
+
+    /**
+     * Check for empty message
+     * 
+     * @return boolean
+     */
+    public function checkForEmptyMessage()
+    {
+        if ((false === $this->error) && empty($this->postedMessage) && 
+                ($this->action === 'insert')) {
+            $this->error = true;
+            $this->jsonDatas = array('error' => array(
+                'message'   => $this->hasEmptyMessage, 
+                'datas'     => array()
+            ));            
+        }    
+                
+        return (boolean) $this->error;
+    }    
+    
+    /**
+     * Check semantic error inside messages
+     * 
+     * @return boolean
+     */
+    public function checkSemanticErrorInMessage()
+    {
+        $message    = '';
+        if ((false === $this->error) && !empty($this->postedMessage)) {
+            if (!preg_match('[#]',$this->postedMessage)) {
+                $message       .= $this->hashtagSemanticMessage."\r\n";
+                $this->error    = true;
+            }
+            if (!preg_match('[@]',$this->postedMessage)) {            
+                $message       .= $this->atSemanticMessage;                
+                $this->error    = true;
+            }
+        }    
+        
+        if (true === $this->error) {
+            $this->jsonDatas = array('error' => array(
+                'message'   => $message, 'datas'     => array()
+            ));
+        }
+        
         return (boolean) $this->error;
     }
     
@@ -228,28 +333,27 @@ class Manager extends Database{
      * Execute sql queries and return datas to angular Controller
      */
     public function execute()
-    {
+    {   
         if (false === $this->error) {
-            if ($this->action === 'insert') {
-                $this->insert();
-            } elseif ($this->action === 'update') {
-                $this->update();
-            }
+            ($this->action === 'insert') ? $this->insert() : $this->update();
 
-            $datas = array('success' => array(
-                'message'=>$this->resultMessage,
-                'datas' => $this->resultDatas
-            ));
-            
+            if (empty($this->jsonDatas)) {
+                $this->jsonDatas = array('success' => array(
+                    'message'=>$this->resultMessage,
+                    'datas' => $this->resultDatas
+                ));
+            }   
         } else {
             $this->triggerError();
-            $datas = array('error' => array(
-                'message'   => $this->resultMessage,
-                'datas'     => array()
-            ));                      
+            if (empty($this->jsonDatas)) {
+                $this->jsonDatas = array('error' => array(
+                    'message'   => $this->resultMessage,
+                    'datas'     => array()
+                ));
+            }
         }
 
-        print json_encode($datas);
+        print json_encode($this->jsonDatas);
     }
     
     /**

@@ -1,8 +1,8 @@
-<div ng-app="myApp" id="store" class="content span12" style="overflow: hidden;" ng-controller="newsController">
+<div ng-app="myApp" id="store" class="content span12"ng-controller="newsController">
     <br/>
     <form ng-submit="processForm()">
-        <textarea id='mdm' name="mdm" ng-model="formData.mdm" class='mdmText' placeholder='Tell us your casual experience or fantasy about a colleague or a classmate... (You can use hashtags)'></textarea><br/>
-        <input type='submit' class='btn btn-danger' ng-disabled="formData.thisForm" value='Share your free #TMDT NOW'><br/>
+        <textarea id='mdm' name="mdm" ng-model="formData.mdm" class='mdmText' placeholder='Write your detailed experience here, hashtag the location, the company or school, the liberal profession, and end up with your "@pseudo, @sex, @age"... DO NOT MENTION REAL NAMES, EMAILS OR PHONE NUMBERS, ANONYMITY IS THE RULE.'></textarea><br/>
+        <input type='submit' class='btn btn-danger' ng-disabled="formData.thisForm" value='I click here to share my experience and contribute to next publishing'><br/>
         <span id="result" name="result" ng-model="formData.resultStatus" ng-class="{true:'formSuccess', false:'formError'}[formData.resultStatus]">{{ result }}</span>
     </form>
     <form class="form-search"> 

@@ -19,10 +19,10 @@ storeApp.controller('newsController',
         // process the form
         $scope.processForm = function() {
             $scope.formData.thisForm = true;
-            console.log($scope.formData.mdm);
+
             if (!$scope.formData.mdm) {
                 $scope.formData.resultStatus    = false;                    
-                $scope.result                   = "You must write a content in the above field first!";
+                $scope.result                   = "You must write yout story in the text field first!";
                 document.getElementById("mdm").focus();
             } else {
                 $http({
