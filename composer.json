@@ -1,0 +1,16 @@
+{
+    "name": "symfony/framework-standard-edition",
+    "license": "MIT",
+    "type": "project",
+    "description": "The Million Dollar Talk",
+    "autoload": {
+        "psr-0": { "": "/" }
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "jublonet/codebird-php": "dev-master"
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}

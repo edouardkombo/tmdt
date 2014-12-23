@@ -72,7 +72,13 @@ class Manager extends Database{
      *
      * @var string 
      */
-    protected $noAgeMessage;    
+    protected $noAgeMessage; 
+    
+    /**
+     *
+     * @var object
+     */
+    protected $codebird;     
     
     /**
      *
@@ -121,6 +127,17 @@ class Manager extends Database{
             throw new \Exception("unable to connect to database");
         }      
     }
+
+    /**
+     * Set query limit
+     * 
+     * @param  Object $cb Codebird object
+     * @return object
+     */
+    public function setCodebird($cb)
+    {
+        return $this->codebird = (object) $cb;
+    }    
     
     /**
      * Set query limit
@@ -421,10 +438,40 @@ class Manager extends Database{
         
         if (!$result) {
             $this->triggerError();
+        } else {
+            $this->socialNetworksPost();
         }
         
         return array();
     }
+    
+    /**
+     * Post the truncated message on Twitter and Facebook
+     * 
+     * @return object 
+     */
+    private function socialNetworksPost()
+    {
+        $message = $this->truncate($this->postedMessage, 110, '...');
+        $params = array(
+          'status' => "$message http://goo.gl/76xGNe"
+        );
+        return $this->codebird->statuses_update($params);        
+    }
+    
+    /**
+     * Truncate strings
+     * 
+     * @param  string  $string String to truncate
+     * @param  integer $width  Number of letters to allow
+     * @param  string  $etc    text to show at the end
+     * @return string
+     */
+    private function truncate($string, $width, $etc = '...')
+    {
+        $wrapped = explode('$trun$', wordwrap($string, $width, '$trun$', false), 2);
+        return (string) $wrapped[0] . (isset($wrapped[1]) ? $etc : '');
+    }    
     
     /**
      * Update query
