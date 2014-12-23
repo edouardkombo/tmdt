@@ -48,7 +48,7 @@ body{
     margin: auto;
     left: 0; right: 0;
     text-align: center;
-    position: absolute;
+    position: relative;
 }
 img.home_picture{
     display: block;
