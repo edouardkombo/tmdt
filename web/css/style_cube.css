@@ -18,7 +18,7 @@
 
 
 body{
-    background-color: #000;
+    background:#f7f7f7;
     -webkit-background-size: 100%; 
     -moz-background-size: 100%; 
     -o-background-size: 100%; 
@@ -148,9 +148,6 @@ a:hover {
     transform: rotateX(0deg) translatez(30px);
     opacity: 1;
     height: 30px;
-}
-.container {
-    background:#000;
 }
 
 .container .well{

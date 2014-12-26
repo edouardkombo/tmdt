@@ -1,0 +1,100 @@
+<!doctype html>
+<html ng-app="TheMillionDollarTalk">
+<head>
+    <title>#TheMillionDollarTalk - Crowdwriting platform - Write your real stories of hookups and one-night stands with colleagues and other professions, by creating a link with previous messages.</title>
+    <meta name="description" content="#TheMillionDollarTalk is a crowdwriting platform where people around the world contribute anonymously to share for a periodic e-book, real stories of hookups and one-night stands with colleagues and other professions.">
+    <meta name="keywords" content="#TheMillionDollarTalk, #tmdt, The million dollar talk, crowdwriting, participative e-book, hookups, one night-stand, hookups with colleagues, romance with colleagues, sex with colleague, sex with plumber, sex with fireman, sex with teacher, sex with nurse, sex experience, sex frustration, sexperience, sex memories, casual sex experience">
+    <meta name="author" content="TMDT"/>    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <meta charset="UTF-8">
+    <!-- Bootstrap, css, google fonts -->
+    <link href="bower_components/bootstrap-combined/bootstrap-combined.min.css" rel="stylesheet" type="text/css"/>    
+    <link href="bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/component.css" rel="stylesheet" type="text/css" />
+    <link href="css/style_cube.css" rel="stylesheet"/>
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Index" />
+    <meta property="og:url" content="http://www.themilliondollartalk.com" />
+    <meta property="og:description" content="#TheMillionDollarTalk is a crowdwriting platform where people around the world contribute anonymously to share for a periodic e-book, real stories of hookups and one-night stands with colleagues and other professions." />
+    <meta property="article:published_time" content="2014-12-21T23:01:40+00:00" />
+    <meta property="article:modified_time" content="2014-12-22T14:25:28+00:00" />
+    <meta property="article:author" content="http://www.themilliondollartalk.com/news" />
+    <meta property="og:site_name" content="The Million Dollar Talk" />
+    <meta property="og:image" content="http://themilliondollartalk.com/images/sb2.jpg" />
+    <meta name="twitter:site" content="@TMDT_EXP" />
+    <meta name="twitter:image" content="http://themilliondollartalk.com/images/sb2.jpg" />
+    <meta name="twitter:card" content="summary" />    
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&appId=1548566655361186&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    
+    <div id='header'>
+        <div id='logo'><a href='/'>#TheMillionDollarTalk - Crowdwriting</a></div>
+    </div>
+    
+    <div class="container">
+        <div class='row'>
+            <div class='col-md-8'>
+                <img src="images/chords-for-the-piano-pdf_05.jpg" alt="Download the PDF Today!" title="Download the PDF Today!" height="483" width="429" />
+            </div>
+            <div>
+                <p class="pre-text">It's crowdwriting, a free collaborative e-book about</p>
+                <h1>Your real stories of hookups and one night-stand with colleagues...</h1>
+                <h2>Inspire your real experience from other contributors stories, and let's write together a real and living saga</h2>
+                <h3><em>Available now for instant download (Adobe PDF)!</em></h3>       
+            </div>
+        </div>
+        <div class="container-shadow">
+            <div id="callMessage">
+                Adapt your real stories of hookups and one-night stands with colleagues and other professionals…<br/>
+                to the surfers previous messages, <b>and participate monthly, to a unique free e-book saga</b><br/>
+                To preserve the ebook suspense, just the last five messages are shown.
+            </div>
+            <div ng-view></div>
+            <div class="row-fluid content-footer">
+                <div class="footer">
+                        Copyright © 2014 TMDT. All rights reserved.
+                        - <a href='/' class='aboutus'><u>Home</u></a>                        
+                        - <a href='#aboutus' class='aboutus'><u>About us</u></a>
+                        - <u>Next e-book publishing:</u> 2015-01-28<br/><br/>
+                        - <u>Contact:</u> themilliondollartalk[at]gmail.com<br/><br/>
+                        <a href="https://twitter.com/TMDT_EXP" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @TMDT_EXP</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                        <br/><br/>
+                        <div class="fb-like-box" data-href="https://www.facebook.com/themilliondollartalk" data-colorscheme="dark" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>                        
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-53563250-3', 'auto');
+        ga('send', 'pageview');
+    </script>
+    
+    <!-- jQuery, Angular -->
+    <script src="bower_components/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="bower_components/angular/angular.js" type="text/javascript"></script>
+    <!-- AngularStore app -->
+    <script src="bower_components/modernizer/modernizr.custom.js" type="text/javascript"></script>   
+    <script src="js/store.js" type="text/javascript"></script>
+    <script src="js/cart.js" type="text/javascript"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="js/news.js" type="text/javascript"></script>     
+    <script src="js/controller.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.twttr=(function(d,s,id){var t,js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return}js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);return window.twttr||(t={_e:[],ready:function(f){t._e.push(f)}})}(document,"script","twitter-wjs"));
+    </script>      
+</body>
+</html>
