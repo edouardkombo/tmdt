@@ -13,24 +13,30 @@ class Manager extends Database{
      * @var string 
      */
     protected $limit;
-
-    /**
-     *
-     * @var string 
-     */
-    protected $successMessage;
     
     /**
      *
      * @var string 
      */
-    protected $errorMessage;     
+    protected $range;
     
     /**
      *
      * @var string 
      */
-    protected $resultMessage; 
+    protected $lang;
+    
+    /**
+     *
+     * @var mixed
+     */
+    protected $lasts;    
+    
+    /**
+     *
+     * @var string 
+     */
+    protected $allGenders = '[@male|@female|@man|@woman|@girl|@boy|@homme|@femme|@garçon|@fille]'; 
     
     /**
      *
@@ -44,47 +50,12 @@ class Manager extends Database{
      */
     protected $postedMessage; 
     
-    /**
-     *
-     * @var string 
-     */
-    protected $hashtagSemanticMessage;
-    
-    /**
-     *
-     * @var string 
-     */
-    protected $atSemanticMessage;
-    
-    /**
-     *
-     * @var string 
-     */
-    protected $hasEmptyMessage;
-    
-    /**
-     *
-     * @var string 
-     */
-    protected $noSexMessage;
-    
-    /**
-     *
-     * @var string 
-     */
-    protected $noAgeMessage; 
     
     /**
      *
      * @var object
      */
     protected $codebird;     
-    
-    /**
-     *
-     * @var string 
-     */
-    protected $sql;
     
     /**
      *
@@ -137,95 +108,7 @@ class Manager extends Database{
     public function setCodebird($cb)
     {
         return $this->codebird = (object) $cb;
-    }    
-    
-    /**
-     * Set query limit
-     * 
-     * @param  integer $limit Limit number of query
-     * @return integer
-     */
-    public function setLimit($limit)
-    {
-        return $this->limit = (integer) $limit;
-    }
-    
-    /**
-     * Set success message
-     * 
-     * @param  string $message Success message
-     * @return string
-     */
-    public function setSuccessMessage($message)
-    {
-        return $this->successMessage = (string) $message;
-    }
-    
-    /**
-     * Set error message
-     * 
-     * @param  string $message Success message
-     * @return string
-     */
-    public function setErrorMessage($message)
-    {
-        return $this->errorMessage = (string) $message;
-    }
-    
-    /**
-     * Set hashtag semantic message
-     * 
-     * @param  string $message Success message
-     * @return string
-     */
-    public function setHashtagSemanticMessage($message)
-    {
-        return $this->hashtagSemanticMessage = (string) $message;
-    }    
-    
-    /**
-     * Set at semantic message
-     * 
-     * @param  string $message Success message
-     * @return string
-     */
-    public function setAtSemanticMessage($message)
-    {
-        return $this->atSemanticMessage = (string) $message;
-    }
-    
-    /**
-     * Set has empty message
-     * 
-     * @param  string $message Success message
-     * @return string
-     */
-    public function setHasEmptyMessage($message)
-    {
-        return $this->hasEmptyMessage = (string) $message;
-    }
-    
-    /**
-     * Set no sex message
-     * 
-     * @param  string $message Success message
-     * @return string
-     */
-    public function setNoSexMessage($message)
-    {
-        return $this->noSexMessage = (string) $message;
-    }
-    
-    /**
-     * Set no age message
-     * 
-     * @param  string $message Success message
-     * @return string
-     */
-    public function setNoAgeMessage($message)
-    {
-        return $this->noAgeMessage = (string) $message;
-    }    
+    }       
     
     /**
      * Get POST vars 
@@ -235,7 +118,11 @@ class Manager extends Database{
     public function getPostVars()
     {
         $this->postedMessage    = filter_input(INPUT_POST, 'mdm');
-        $this->action           = filter_input(INPUT_POST, 'action'); 
+        $this->action           = filter_input(INPUT_POST, 'action');
+        $this->lang             = filter_input(INPUT_POST, 'lang'); 
+        $this->range            = filter_input(INPUT_POST, 'range');
+        $this->limit            = filter_input(INPUT_POST, 'limit');
+        $this->lasts            = filter_input(INPUT_POST, 'lasts');        
 
         return (boolean) true;
     }        
@@ -244,60 +131,24 @@ class Manager extends Database{
      * Get sql query to retrieve
      * 
      * @param  string  $nature Type of sql to retrieve
-     * @param  integer $limit  Limit query
      * @return string
      */
-    private function getQuery($nature, $limit = null)
+    private function getQuery($nature)
     {
         $sql = '';
         switch($nature) {
-            case "basic":
-                $sql = "SELECT * FROM tmdt.posts WHERE ended_at IS NULL ORDER BY id DESC LIMIT 0,$limit";
+            case "select":
+                $sql = "SELECT * FROM tmdt.posts WHERE valid=:valid AND lang=:lang ORDER BY id DESC LIMIT $this->limit,$this->range";
                 break;
-            case "all":
-                $sql = "SELECT * FROM tmdt.posts ORDER BY id DESC LIMIT 0,$this->limit";
-                break;            
-            case "countNew":
-                $sql = "SELECT count(id) as nb FROM tmdt.posts WHERE ended_at IS NULL ORDER BY id DESC";
-                break;
-            case "update":
-                $sql = "UPDATE tmdt.posts SET views=:views,shown_at=:shownAt,ended_at=:endedAt WHERE id=:id";
-                break;
+            case "lasts":
+                $sql = "SELECT * FROM tmdt.posts WHERE valid=:valid AND lang=:lang AND created_at>=:createdAt ORDER BY id DESC";
+                break;             
             case "insert":
-                $sql = "INSERT INTO tmdt.posts SET message=:message,created_at=:createdAt";
+                $sql = "INSERT INTO tmdt.posts SET message=:message,created_at=:createdAt,ip=:ip,lang=:lang";
                 break; 
+            
         }
         return (string) $sql;
-    }
-    
-    /**
-     * Return time before message publication message
-     * 
-     * @param  string $message success message
-     * @return string
-     */
-    private function getTimeBeforePublish()
-    {
-        $selectNewSql   = $this->getQuery('countNew');
-        $selectLastSql  = $this->getQuery('basic', 1);
-        
-        $allNew             = $this->pdo->prepare($selectNewSql);
-        $allNew->execute();
-        $newSql             = $allNew->fetch();
-
-        $lastDuration       = $this->pdo->prepare($selectLastSql);
-        $lastDuration->execute();
-        $duration           = $lastDuration->fetch();
-
-        $_duration          = '+1 minute';  
-        $lastAvailableMessageTime = date("Y-m-d H:i:s") - date("Y-m-d H:i:s", 
-                strtotime(date($duration['created_at'])." $_duration"));
-
-
-        $time = ceil((($newSql['nb']*(60+$lastAvailableMessageTime))/3)/60);
-        $result = (string) sprintf($this->successMessage, $time);
-        
-        return (string) $this->resultMessage = $result;
     }    
     
     /**
@@ -308,7 +159,6 @@ class Manager extends Database{
     private function triggerError()
     {
         $this->error         = true;
-        $this->resultMessage = $this->errorMessage;
         
         return (boolean) $this->error;
     }
@@ -320,35 +170,19 @@ class Manager extends Database{
      */
     public function csrfProtect()
     {
-        $this->getTimeBeforePublish();
-        
         $origin     = filter_input(INPUT_SERVER, 'HTTP_ORIGIN');
-        $accepts    = array('http://localhost:8080', 'http://localhost', NULL,
-            'http://www.themilliondollartalk.com');
+        $accepts    = array(
+            'http://localhost:8080', 
+            'http://localhost:80', 
+            'http://localhost', 
+            NULL,
+            'http://www.themilliondollartalk.com'
+        );
 
         if (!in_array($origin, $accepts) OR ($this->action === NULL)) {        
             $this->triggerError();
         }
 
-        return (boolean) $this->error;
-    }
-
-    /**
-     * Check for empty message
-     * 
-     * @return boolean
-     */
-    public function checkForEmptyMessage()
-    {
-        if ((false === $this->error) && empty($this->postedMessage) && 
-                ($this->action === 'insert')) {
-            $this->error = true;
-            $this->jsonDatas = array('error' => array(
-                'message'   => $this->hasEmptyMessage, 
-                'datas'     => array()
-            ));            
-        }    
-                
         return (boolean) $this->error;
     }    
     
@@ -359,30 +193,28 @@ class Manager extends Database{
      */
     public function checkSemanticErrorInMessage()
     {
-        $message    = '';
         if ((false === $this->error) && !empty($this->postedMessage)) {
-            if (!preg_match('[#]',$this->postedMessage)) {
-                $message       .= $this->hashtagSemanticMessage."\r\n";
+            if (!preg_match('[#]',$this->postedMessage)) {;
                 $this->error    = true;
             }
-            if (!preg_match('[@]',$this->postedMessage)) {            
-                $message       .= $this->atSemanticMessage."\r\n";                
+            if (!preg_match('[@]',$this->postedMessage)) {                           
                 $this->error    = true;
             } else {
-                if (!preg_match('[@male|@female|@man|@woman]',$this->postedMessage)) {            
-                    $message       .= $this->noSexMessage."\r\n";                
+                if (!preg_match($this->allGenders, $this->postedMessage)) {                           
                     $this->error    = true;
                 }
-                if (!preg_match('~@[0-9]~', $this->postedMessage)) {            
-                    $message       .= $this->noAgeMessage."\r\n";                
+                if (!preg_match('~@[0-9]~', $this->postedMessage)) {                           
                     $this->error    = true;
-                }                
+                }
+                if (!preg_match('~[A-Za-z0-9_-]+@[A-Za-z0-9_-]+\.([A-Za-z0-9_-][A-Za-z0-9_]+)~', $this->postedMessage)) {                           
+                    $this->error    = true;
+                }              
             }
         }    
         
         if (true === $this->error) {
             $this->jsonDatas = array('error' => array(
-                'message'   => $message, 'datas'     => array()
+                'datas'     => array()
             ));
         }
         
@@ -393,13 +225,12 @@ class Manager extends Database{
      * Execute sql queries and return datas to angular Controller
      */
     public function execute()
-    {   
+    {
         if (false === $this->error) {
-            ($this->action === 'insert') ? $this->insert() : $this->update();
+            ($this->action === 'insert') ? $this->insert() : $this->select();
 
             if (empty($this->jsonDatas)) {
                 $this->jsonDatas = array('success' => array(
-                    'message'=>$this->resultMessage,
                     'datas' => $this->resultDatas
                 ));
             }   
@@ -407,7 +238,6 @@ class Manager extends Database{
             $this->triggerError();
             if (empty($this->jsonDatas)) {
                 $this->jsonDatas = array('error' => array(
-                    'message'   => $this->resultMessage,
                     'datas'     => array()
                 ));
             }
@@ -424,11 +254,15 @@ class Manager extends Database{
     private function insert()
     {
         $insertSql  = $this->getQUery('insert');
-
+        $ipAddress  = filter_input(INPUT_SERVER, 'REMOTE_ADDR');
+        
         $values = array(
-            ':message'   => $this->postedMessage,       
-            ':createdAt' => date('Y-m-d H:i:s')
+            ':message'      => $this->postedMessage,       
+            ':createdAt'    => date('Y-m-d H:i:s'),
+            ':lang'         => $this->lang,
+            ':ip'           => $ipAddress
         );
+        
         $stmt   = $this->pdo->prepare($insertSql);
 
         foreach ($values as $key => $val) {
@@ -478,54 +312,42 @@ class Manager extends Database{
      * 
      * @return array
      */
-    private function update()
+    private function select()
     {
-        $selectSql      = $this->getQuery('basic', 3); 
-        $lastThreeSql   = $this->getQuery('all');        
-        $updateSql      = $this->getQUery('update');
-        
+        if ($this->lasts !== 'false') {
+            $selectSql      = $this->getQuery('lasts'); 
+
+            $values = array(
+                ':lang'     => $this->lang,
+                ':valid'    => 1,
+                ':createdAt'=> date('Y-m-d H:i:s', time() - $this->lasts)
+            );            
+        } else {
+            $selectSql      = $this->getQuery('select'); 
+
+            $values = array(
+                ':lang'     => $this->lang,
+                ':valid'    => 1,
+            );
+        }
+
         $stmt   = $this->pdo->prepare($selectSql);
+        foreach ($values as $k => $v) {
+            $params = ($k === ':valid') ? PDO::PARAM_INT : PDO::PARAM_STR; 
+            $stmt->bindValue($k, $v, $params);
+        }         
+        
         $stmt->execute();
         $data   = $stmt->fetchAll();
 
-        if (count($data) < 3) {
-            $stmt   = $this->pdo->prepare($lastThreeSql);
-            $stmt->execute();
-            $data   = $stmt->fetchAll();    
-        }
-
-        foreach ($data as $key => $val) {
-            $currentDate    = date('Y-m-d H:i:s');
-
-            $duration       = '+1 minutes';  
-            $_referenceDate = date("Y-m-d H:i:s", strtotime(
-                    date($val['created_at'])." $duration"));
-
-            $views          = (integer) $val['views'];
-            $views++;
-            $referenceDate  = ($currentDate>=$_referenceDate) ? 
-                    $currentDate : NULL ;    
-            $shownAt        = (!empty($val['shown_at'])) ? 
-                    $val['shown_at'] : $currentDate;
-
-            $values = array(
-                ':views'   => $views,
-                ':shownAt' => $shownAt,
-                ':endedAt' => $referenceDate,
-                ':id'      => $val['id']
-            );
-
-            $_stmt   = $this->pdo->prepare($updateSql);
-            foreach ($values as $k => $v) {
-                $params = (($k === ':id') || ($k === ':views')) ? 
-                        PDO::PARAM_INT : PDO::PARAM_STR; 
-                $_stmt->bindValue($k, $v, $params);
-            }    
-            $_stmt->execute();
-
-            $data[$key]['views'] = $views;
-            $data[$key]['shown_at'] = $shownAt; 
-            $data[$key]['ended_at'] = $referenceDate;    
+        $emailPattern = '/[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/';
+        
+        
+        foreach ($data as $key => $var) {
+            $data[$key]['message'] = preg_replace_callback($emailPattern, function($matches) {
+                $segments = explode('@', $matches[0]);
+                return $segments[0];           
+            }, $var['message']);
         }
         
         return (array) $this->resultDatas = $data;

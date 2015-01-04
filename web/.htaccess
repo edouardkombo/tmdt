@@ -1,4 +1,9 @@
-RewriteEngine on
+RewriteEngine On
+#Options +FollowSymLinks
+#RewriteCond %{REQUEST_URI}  ^/$
+#RewriteCond %{QUERY_STRING} ^_escaped_fragment_=/?(.*)$
+#RewriteRule ^(.*)$ /snapshots/%1? [NC,L]
+
 DirectoryIndex index.html index.htm default.htm index.php index.php3 index.phtml index.php5 index.shtml mwindex.phtml
 Options -Indexes
 

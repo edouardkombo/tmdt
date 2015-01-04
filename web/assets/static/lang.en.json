@@ -1,0 +1,55 @@
+{
+    "head": {
+        "title": "#TheMillionDollarTalk - free collaborative e-book written by anonymous.",
+        "description": "#TheMillionDollarTalk is a monthly collaborative e-book whose story is written by naughty experiences from anonymous visitors.",
+        "keywords": "#TheMillionDollarTalk, the million dollar talk, collaborative e-book, free e-book, monthly e-book, anonymous experiences, naughty anonymous experiences, naughty anonymous stories"       
+    },    
+    "menu": {
+        "home": "Home",
+        "aboutus": "About us",
+        "write": "Write your story",
+        "ebook": "E-books",
+        "contact": "Contact us",
+        "chooseLanguage": "Choose your language:"        
+    },    
+    "home" : {
+        "title": "#TheMillionDollarTalk",
+        "subTitle": "Free collaborative e-book, written by you and them",
+        "tagLine": "Anonymously, tell us your naughty experiences outside serious relationships. Retype your story adapting to others, in order to capture your own fleeting moments within a seductive collaborative novel.",
+        "contributeLink": "Tell us your story now!"
+    },
+    "aboutus" : {
+        "title": "About us",
+        "question1": "#TheMillionDollarTalk, What is it?",
+        "answer1": "#TheMillionDollarTalk it's crowdwriting in the rough. Who has never experienced a torrid passion, a one-night stand or unspeakable naughty times? We all remember a place, a smell, a physical characteristic, these details are part of us, of you, and we want you to share them to us and immortalize them. #TheMillionDollarTalk allows you to re-write your experiences, adapting them to those of others, to create a single romance story with an unexpected ending. Only you and nobody else could write the end of the story. At the end of each month, we immortalize your written experiences in a free e-book called '#TheMillionDollarTalk', and distributed to the largest number, in your favorite download platforms. You too immortalise your experiences and the characters that constituted them, tell us your story now.",        
+        "question2": "Who is behind this beautiful project?",
+        "answer2": "#TheMillionDollarTalk is an original idea from Edouard K., creative web developer, joined by John T., pragmatic commercial, both based in Paris (France). Basically, the plan was to send messages visible by the whole world, to someone special. It quickly evolved into a free sharing of experiences within a community, to become a collaborative e-book platform in which everyone can re-write his naughty experiences to make a story out of the ordinary, continued by others. What it is to date.",
+        "findus": "Find us on your favorite social networks"
+    },
+    "crowdwriting" : {
+        "title": "Tell us your experience",
+        "message": "Read this month previous experiences and continue the story line.",
+        "message1": "Use your own experience, tell the details, adapt.",        
+        "message2": "Use hashtags to mark places, objects and retails (ex: #paris).",
+        "message3": "Finish by filling in by '@xxx', your @email (will be hidden), @age and @gender.",        
+        "write": "What's his(her) name? Where did you meet and act? Does he(she) have a pecullar smell? Do you remember a particular detail or object (brand, mark, physical detail)? Tell us now...!",        
+        "contribute": "Wow I feel good, I now broadcast my story!",        
+        "success": "Thank you for your contribution, your message will appear in a few moment. To be notified of new contributions, subscribe on our Facebook or Twitter page.",
+        "error": "An error has occured, Have you filled in your nickname (ex: @nico78), your age (ex: @28) and your gender (ex: @female)? You must also specify at least one hashtag (ex: #paris).",
+        "emptyError": "Your message is empty, tell us your experience in the text area above.",
+        "serverError": "Sorry, we encountered a server error. The service will come back soon."
+    },    
+    "ebooks" : {
+        "title": "Your e-books",
+        "thanks": "A huge 'THANK YOU!' to all of the anonymous contributors!",
+        "thanks2": "These are your stories that are published, share them all... discreetly!",        
+        "download": "Download",        
+        "preview": "Preview"
+    },     
+    "contact" : {
+        "title": "Stay in touch",
+        "message": "Contributor, investor, advertiser, publisher, journalist, job seeker?",
+        "invite": "Email us or join us on your favorite social networks!",        
+        "email": "themilliondollartalk[at]gmail.com"
+    }    
+}

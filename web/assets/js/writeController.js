@@ -1,74 +1,130 @@
-tmdtApp.controller('contactController', 
-    ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
+tmdtApp.directive('scroller', function () {
+    return {
+        restrict: 'A',
+        scope: {
+            loadingMethod: "&"
+        },
+        link: function (scope, elem, attrs) {
+            var rawElement = elem[0];
+            if (rawElement) {
+                window.addEventListener("scroll", function() {
+                    var customScrollTop = (document.documentElement.scrollTop||document.body.scrollTop);
+                    if (document.body.scrollHeight === 
+                            (customScrollTop + window.innerHeight)) 
+                    {
+                        console.log('yiii');
+                        scope.$apply(scope.loadingMethod);
+                    }                
+                });
+            }
+        }
+    };
+});
+
+tmdtApp.controller('writeController', 
+    ['$scope', '$http', 'ngTranslation', '$timeout', function ($scope, $http, ngTranslation, $timeout) {
+        
         //Focus on element
         document.getElementById("mdm").focus();
-        updateDatas($scope, $http);
         
-        var countUp;
-        countUp = function() {
-            updateDatas($scope, $http);
-            $timeout(countUp, 10000);
-        };
-        $timeout(countUp, 10000);
-        
-        // create a blank object to hold our form information
-        // $scope will allow this to pass between controller and view
         $scope.formData     = {action: 'insert', resultStatus: false};
         
-        // process the form
-        $scope.processForm = function() {
+        $scope.items        = [];
+        $scope.counter      = 0;
+        $scope.loaded       = true;
+        $scope.loadMore     = function(){
+            $scope.loaded = false;
+            getContributions($scope, $http, lasts = false);
+            $scope.counter += paginationStep;
+        };
+        if ($scope.loaded === true) {
+            $scope.loadMore();
+        }
+        
+        //Get new messages every 3 seconds
+        var getNewEntries = function() {
+            getContributions($scope, $http, lasts = 3);
+            $timeout(getNewEntries, 3000); 
+        }.bind(this);
+        $timeout(getNewEntries, 3000);        
+         
+        $scope.formData     = {action: 'insert', resultStatus: null, lang: userLang};
+        $scope.processForm  = function() {
             $scope.formData.thisForm = true;
 
             if (!$scope.formData.mdm) {
                 $scope.formData.resultStatus    = false;                    
-                $scope.result                   = "You must write yout story in the text field first!";
+                $scope.result                   = ngTranslation.get(userLang).crowdwriting.emptyError;
                 document.getElementById("mdm").focus();
             } else {
                 $http({
                     method  : 'POST',
-                    url     : 'process.php',
+                    url     : phpUrl + 'process.php',
                     data    : $.param($scope.formData),
                     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
                 })
                 .success(function(data) {
+            
                     if (!data.success) {
                         $scope.formData.resultStatus    = false;                    
-                        $scope.result                   = data.error.message;
-                    } else {
+                        $scope.result                   = ngTranslation.get(userLang).crowdwriting.error;
+                    } else {                    
                         $scope.formData.mdm             = null;
                         $scope.formData.resultStatus    = true;                    
-                        $scope.result                   = data.success.message; 
+                        $scope.result                   = ngTranslation.get(userLang).crowdwriting.success; 
                     }
+                    
+                    var resetValues = function() {
+                        $scope.formData.resultStatus    = null;                      
+                        $scope.result                   = '';
+                        $scope.formData.thisForm        = false; 
+                        if (data.success) {
+                            $scope.formData.mdm             = null;
+                        }
+                    }.bind(this);
+                    $timeout(resetValues, 3000);                                       
 
                 }).error(function(data) {
-                    console.log(data);
+                    $scope.formData.resultStatus    = false;                    
+                    $scope.result                   = ngTranslation.get(userLang).crowdwriting.serverError;
                 });
             }
-        };                
+        };               
     }]
 );
 
-function updateDatas($scope, $http) {
-    var datas = {action: 'update'};
+function getContributions($scope, $http, lastsValue) {
+    var datas = {action: 'update', range: paginationStep, limit: $scope.counter, lang: userLang, lasts:lastsValue};
     $http({
         method  : 'POST',
-        url     : 'process.php',
+        url     : phpUrl + 'process.php',
         data    : $.param(datas),      
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
     })
     .success(function(data){
-        if (!data.success) {
-            $scope.data = data.success.datas;
+        var result = data.success.datas;
+
+        if (lastsValue !== false) {
+            
+            if (result[0] !== undefined) {
+                for (var key in loop = result){
+                    $scope.items.unshift(loop[key]);
+                }               
+            }
         } else {
-            $scope.data = data.success.datas;
+            for (var key in loop = result){
+                $scope.items.push(loop[key]);
+            }
         }
+        
+        $scope.loaded = true;
         $scope.result = null;
         $scope.formData.thisForm = false;
     })
     .error(function(data) {
-        $scope.data = "error in fetching datas";
+        $scope.loaded = false;
+        $scope.items = "error in fetching datas";
         $scope.result = null;
         $scope.formData.thisForm = false;
-    });  
-        
+    });      
 }

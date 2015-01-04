@@ -1,17 +1,16 @@
 <section class="section" id="head">
-    <div class="container" ng-controller="homeController">
+    <div class="container">
         <div class="row">
             <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">	
                 <!-- Site Title, your name, HELLO msg, etc. -->
-                <h1 class="title">#TheMillionDollarTalk</h1>
-                <h2 class="subtitle">Free monthly e-book written by anonymous</h2>
+                <h1 class="title">{{ 'home.title' | translate }}</h1>
+                <h2 class="subtitle">{{ 'home.subTitle' | translate }}</h2>
                 <!-- Short introductory (optional) -->
                 <h3 class="tagline">
-                    Write your real stories of hookups and one night-stand with colleagues and other professionals.<br>
-                    Adapt them to previous anonymous stories, and build a beautiful monthly crowdwriting saga.
+                    {{ 'home.tagLine' | translate }}
                 </h3>
                 <!-- Nice place to describe your site in a sentence or two -->
-                <p><a href="/" class="btn btn-danger btn-lg">Become a #MillionDollarTalker now</a></p>
+                <p><a href="#!crowdwriting" class="btn btn-danger btn-lg">{{ 'home.contributeLink' | translate }}</a></p>
             </div> <!-- /col -->
         </div> <!-- /row -->
     </div>

@@ -53,6 +53,7 @@ Temporary Items
 
 # Windows
 # =========================
+node_modules
 
 # Windows image file caches
 Thumbs.db

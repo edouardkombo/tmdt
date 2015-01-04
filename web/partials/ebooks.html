@@ -1,24 +1,25 @@
 <!-- Third (Works) section -->
-<section class="section" id="ebooks">
-    <div class="container" ng-controller="ebooksController">
-        <h2 class="text-center title">E-Books</h2>
+<section class="section" id="head">
+    <div class="container">
+        <h2 class="text-center title">{{ 'ebooks.title' | translate }}</h2>
         <p class="lead text-center">
-            Big and Huge "<strong>Thank You!</strong>" to all of the <strong>#TheMillionDollarTalk</strong> contributors<br>
-            Don't stop writing for love around the world, thank you guys!
+            {{ 'ebooks.thanks' | translate }}
+            <br/>
+            {{ 'ebooks.thanks2' | translate }}
         </p>
         <div class="row">
             <div class="col-sm-4 col-sm-offset-2">
                 <div class="thumbnail">
                     <img src="assets/screenshots/sshot.jpg" alt="">
                     <div class="caption">
-                        <h3>January 2015</h3>
+                        <h3>January 2015 (french version)</h3>
                         <p>Coming soon - Publishing date fixed on January 28th.</p>
                         <p>
-                            <a href="#" class="btn btn-default" role="button">download</a>
-                            <a href="#" class="btn btn-default" role="button">Preview (soon)</a>                                
+                            <a href="#" class="btn btn-default" role="button">{{ 'ebooks.download' | translate }}</a>
+                            <a href="#" class="btn btn-default" role="button">{{ 'ebooks.preview' | translate }}</a>                                
                         </p>
                     </div>
-                </div>
+                </div>               
             </div>
         </div>
     </div>

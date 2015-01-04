@@ -61,6 +61,12 @@ body {
 	top:-70px; 
 	opacity: 0;  
 }
+.bold {
+    font-weight: bold;
+}
+.normal {
+    font-weight: normal;
+}
 .mainmenu .dropdown-menu {
 	top: -14em;
 	left: 0px;
@@ -175,13 +181,14 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 /*                   UI - Buttons                       */
 /********************************************************/
 .btn{
-	color:#333;
-	text-shadow: none;
-	text-decoration: none;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	border:0 none;
+    color:#333;
+    text-shadow: none;
+    text-decoration: none;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border:0 none;
+    text-transform: uppercase;
 }
 .btn:hover {
 	color:#000;
@@ -211,6 +218,45 @@ a:hover, a:active { color:#fff; text-decoration: underline; }
 }
 
 
+.mdmText {
+    width: 750px;
+    height: 50px;
+    padding: 5px;
+}
+
+ul.messages {
+    font-size: 16px;
+    width: 800px;
+    float: left;
+    margin-top: 20px;
+    list-style: none;
+}
+
+ul.messages li {
+    float: left;
+    margin-top:10px;
+    background:#FFF;
+    padding: 20px;
+    width: 750px;
+    height: auto;
+    margin-left: -40px;
+    clear: both;
+}
+
+div#result {
+    margin-top:10px;
+    width: 700px;
+    padding: 5px;
+    color:#FFF;
+}
+
+.formSuccess {
+    background: green;
+}
+
+.formError {
+    background: red;
+}
 
 /********************************************************/
 /*                 UI - Thumbnails                      */

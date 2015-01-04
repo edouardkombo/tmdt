@@ -1,29 +1,50 @@
 'use strict';
+var userLang        = navigator.language || navigator.userLanguage;
+var paginationStep  = 10;
+var phpUrl          = 'http://localhost:80/';
 
-var tmdtApp = angular.module('TheMillionDollarTalk', ['pascalprecht.translate']).
-    config(['$routeProvider', function($routeProvider) {
+var tmdtApp = angular.module('TheMillionDollarTalk', ['ng-translation','ngRoute','monospaced.elastic'])
+.config(['ngTranslationProvider', function(ngTranslationProvider) {
+    ngTranslationProvider.
+        setDirectory('assets/static').
+        setFilesSuffix('.json').
+        langsFiles({
+            en: 'lang.en',
+            fr: 'lang.fr'
+        }).
+        fallbackLanguage(userLang);
+}])
+.config(['$locationProvider', function($locationProvider) {
+        $locationProvider.hashPrefix('!');
+    }
+])
+.config(['$routeProvider', function($routeProvider) {                  
     $routeProvider.
-        when('/', {
-            templateUrl: 'partials/home.html',
+        when('/index', {
+            templateUrl: '/partials/home.html',
             controller: 'homeController' 
         }).
         when('/aboutus', {
-            templateUrl: 'partials/aboutus.html',
+            templateUrl: '/partials/aboutus.html',
             controller: 'aboutController'
         }).                
         when('/crowdwriting', {
-            templateUrl: 'partials/crowdwriting.html',
+            templateUrl: '/partials/crowdwriting.html',
             controller: 'writeController' 
         }).              
         when('/ebooks', {
-            templateUrl: 'partials/ebooks.html',
+            templateUrl: '/partials/ebooks.html',
             controller: 'ebookController'
         }).
         when('/contact', {
-            templateUrl: 'partials/contact.html',
+            templateUrl: '/partials/contact.html',
             controller: 'contactController'
         }).
         otherwise({
-            redirectTo: '/'
+            redirectTo: '/index'
         });
-    }]);
+}]);
+
+tmdtApp.run(function(ngTranslation, $location) {
+    ngTranslation.use(userLang);
+});

@@ -1,5 +1,4 @@
 tmdtApp.controller('homeController', 
-    ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
-        
+    ['$scope', '$timeout', 'ngTranslation', function ($scope, $timeout, ngTranslation) {    
     }]
 );

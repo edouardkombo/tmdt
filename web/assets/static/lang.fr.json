@@ -1,0 +1,55 @@
+{
+    "head": {
+        "title": "#TheMillionDollarTalk - e-book collaboratif gratuit, écrit par des anonymes.",
+        "description": "#TheMillionDollarTalk est un e-book mensuel collaboratif dont l'histoire est écrite par les expériences coquines d'internautes anonymes.",
+        "keywords": "#TheMillionDollarTalk, the million dollar talk, e-book collaboratif, e-book gratuit, e-book mensuel, expériences anonymes, expériences coquines anonymes, histoires coquines anonymes"        
+    },    
+    "menu": {
+        "home": "Accueil",
+        "aboutus": "A propos de nous",
+        "write": "Ecrire mon histoire",
+        "ebook": "E-books",
+        "contact": "Contactez-nous",
+        "chooseLanguage": "Choisissez votre langue:"
+    },
+    "home" : {
+        "title": "#TheMillionDollarTalk",
+        "subTitle": "E-book collaboratif gratuit, écrit par vous et eux",
+        "tagLine": "Anonymement, contez-nous vos expériences coquines hors relations sérieuses. Retranscrivez votre histoire en l'adaptant à celle des autres, pour immortaliser vos propres moments éphémères au sein d'un roman collaboratif séduisant.",
+        "contributeLink": "Racontez-nous votre histoire maintenant!"
+    },
+    "aboutus" : {
+        "title": "A propos de nous",
+        "question1": "#TheMillionDollarTalk, qu'est-ce-que c'est?",
+        "answer1": "#TheMillionDollarTalk c'est du crowdwriting à l'état brut. Qui n'a jamais vécu une passion torride, une histoire d'un soir ou des moments coquins inqualifiables? On se souvient tous d'un lieu, d'une odeur, d'une caractéristique physique, ces détails font partie de nous, de vous, et nous voulons que vous nous les partagiez pour les immortaliser. En parler peut donc devenir une thérapie efficace. #TheMillionDollarTalk vous permet de ré-écrire vos expériences, en les adaptant à celles des autres, pour créer une histoire de romance unique au dénouement inattendu. Seul vous et personne d'autre écrirez la fin de l'histoire. Chaque fin de mois, nous immortalisons vos expériences écrites au sein d'un e-book gratuit appelé '#TheMillionDollarTalk', et distribué au plus grand nombre, dans vos plateformes de téléchargement favorites. Immortalisez vous aussi vos expériences et les personnages qui y ont constituées, racontez-nous votre histoire dès maintenant.",        
+        "question2": "Qui se cache derrière ce beau projet?",
+        "answer2": "#TheMillionDollarTalk est une idée originale de Edouard K., développeur web créatif, rejoint par John T., commercial pragmatique, tous deux basés sur Paris (France). A la base, le projet était d'envoyer des messages visibles par la terre entière, à quelqu'un de spécial. Il a très rapidement évolué vers le libre partage de ses expériences au sein d'une communauté, jusqu'à devenir une plateforme de e-book collaboratif dans laquelle, chacun peut ré-écrire ses expériences coquines pour en faire une histoire hors du commun, poursuivie par d'autres. Ce qu'il est à ce jour.",
+        "findus": "Trouvez-nous sur vos réseaux sociaux favoris"
+    },
+    "crowdwriting" : {
+        "title": "Racontez-nous votre expérience",
+        "message": "Lisez les précédentes expériences de ce mois, puis continuez le fil de l'histoire.",
+        "message1": "Servez-vous de votre expérience personnelle, racontez les détails, adaptez.",        
+        "message2": "Utilisez des hashtag pour marquer des lieux, objets et commerces (ex: #paris).",
+        "message3": "Terminez en renseignant par '@xxx', votre @email (sera masqué), @age et @sexe.",        
+        "write": "Comment s'appellait-il(elle)? Où a lieu la rencontre et l'acte? Avait-il(elle) une odeur particulière? Vous souvenez-vous d'un objet ou détail particulier (enseigne, marque, détail physique)? RACONTEZ-NOUS maintenant...!",        
+        "contribute": "Waouh çà fait du bien, je diffuse maintenant mon histoire!",        
+        "success": "Merci de votre contribution, votre message apparaîtra dans quelque instants. Pour être informé(e) des nouveaux messages, abonnez-vous sur notre page Facebook ou Twitter.",
+        "error": "Une erreur s'est produite, avez-vous renseigné(e) votre pseudo (ex: @nico78), votre âge (ex: @28) et votre sexe (ex: @homme)? Vous devez aussi renseigner au moins un hashtag (ex: #paris).",
+        "emptyError": "Votre message est vide, racontez-nous votre expérience dans la zone de texte ci-dessus.",
+        "serverError": "Désolé, une erreur serveur s'est produite. Elle sera résolue sous peu."
+    },     
+    "ebooks" : {
+        "title": "Vos e-books",
+        "thanks": "Un grand 'MERCI!' à vous, tous les contributeurs et contribrutices!",
+        "thanks2": "Ce sont vos histoires qui sont publiées, partagez-les à tous... discrètement!",        
+        "download": "Télécharger",        
+        "preview": "Apercu"
+    },    
+    "contact" : {
+        "title": "Restons en contact",
+        "message": "Contributeur, investisseur, publicitaire, éditeur, journaliste, job seeker?",
+        "invite": "Contactez-nous par email our sur vos réseaux sociaux favoris!",        
+        "email": "themilliondollartalk[at]gmail.com"
+    }    
+}
