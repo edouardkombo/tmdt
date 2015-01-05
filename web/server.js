@@ -9,6 +9,7 @@
     var errorhandler    = require('errorhandler');
     var vhost           = require('vhost');
     var static          = require('static');
+    var NginxConfFile   = require('nginx-conf').NginxConfFile;
 
     // configuration =================
     function createVirtualHost(domainName, dirPath) {
