@@ -59,7 +59,7 @@ tmdtApp.controller('writeController',
             } else {
                 $http({
                     method  : 'POST',
-                    url     : phpUrl + 'process.php',
+                    url     : phpUrl + 'index.php',
                     data    : $.param($scope.formData),
                     headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
                 })
@@ -97,7 +97,7 @@ function getContributions($scope, $http, lastsValue) {
     var datas = {action: 'update', range: paginationStep, limit: $scope.counter, lang: userLang, lasts:lastsValue};
     $http({
         method  : 'POST',
-        url     : phpUrl + 'process.php',
+        url     : phpUrl + 'index.php',
         data    : $.param(datas),      
         headers : { 'Content-Type': 'application/x-www-form-urlencoded' }  // set the headers so angular passing info as form data (not request payload)
     })

@@ -1,7 +1,7 @@
 'use strict';
 var userLang        = navigator.language || navigator.userLanguage;
 var paginationStep  = 10;
-var phpUrl          = 'http://backend.themilliondollartalk.com/';
+var phpUrl          = 'http://www.themilliondollartalk.com:8080/';
 
 var tmdtApp = angular.module('TheMillionDollarTalk', ['ng-translation','ngRoute','monospaced.elastic'])
 .config(['ngTranslationProvider', function(ngTranslationProvider) {
