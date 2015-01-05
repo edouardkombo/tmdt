@@ -6,21 +6,22 @@
     var morgan          = require('morgan');             // log requests to the console (express4)
     var bodyParser      = require('body-parser');    // pull information from HTML POST (express4)
     var methodOverride  = require('method-override'); // simulate DELETE and PUT (express4)
-    var errorhandler    = require('errorhandler')
+    var errorhandler    = require('errorhandler');
+    var vhost           = require('vhost');
+    var static          = require('static');
 
     // configuration =================
     function createVirtualHost(domainName, dirPath) {
-        var vhost = express();
         //parses request body and populates request.body
-        vhost.use( bodyParser() );
+        app.use( bodyParser() );
         //checks request.body for HTTP method overrides
-        vhost.use( methodOverride() );
+        app.use( methodOverride() );
         //Where to serve static content
-        vhost.use( express.static( dirPath ) );
+        app.use( express.static( dirPath ) );
         //Show errors
-        vhost.use( errorhandler({ dumpExceptions: true, showStack: true }));
+        app.use( errorhandler({ dumpExceptions: true, showStack: true }));
 
-        return express.vhost(domainName, vhost);
+        return vhost(domainName, app);
     }
 
 
