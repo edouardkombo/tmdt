@@ -6,9 +6,9 @@ ini_set('display_errors', '1');
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: text/html; charset=utf-8');
 
-require '../vendor/autoload.php';
-require '../Database.php';
-require '../Manager.php';
+require '../../vendor/autoload.php';
+require '../../Database.php';
+require '../../Manager.php';
 
 \Codebird\Codebird::setConsumerKey("LB8JWqYaEpX09Gmfr76UxhTfS", "CTN8HJ1Z1OLDrEVMdEp4tORqchFuwX85I1FaC72oqyGU9EfgBz");
 $cb = \Codebird\Codebird::getInstance();
