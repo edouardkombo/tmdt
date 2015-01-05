@@ -11,9 +11,9 @@
     function createVirtualHost(domainName, dirPath) {
         var vhost = express();
         //parses request body and populates request.body
-        vhost.use( express.bodyParser() );
+        vhost.use( bodyParser() );
         //checks request.body for HTTP method overrides
-        vhost.use( express.methodOverride() );
+        vhost.use( methodOverride() );
         //Where to serve static content
         vhost.use( express.static( dirPath ) );
         //Show errors
