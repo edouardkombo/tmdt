@@ -27,8 +27,10 @@
 
     //Create the virtual hosts
     var theMillionDollarTalk = createVirtualHost("www.themilliondollartalk.com", "themilliondollartalk");
+    var theMillionDollarTalk2 = createVirtualHost("themilliondollartalk.com", "themilliondollartalk");
     //Use the virtual hosts
     app.use(theMillionDollarTalk);
+    app.use(theMillionDollarTalk2);
 
 
     //mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io   
