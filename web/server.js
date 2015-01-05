@@ -8,8 +8,7 @@
     var methodOverride  = require('method-override'); // simulate DELETE and PUT (express4)
     var errorhandler    = require('errorhandler');
     var vhost           = require('vhost');
-    var static          = require('static');
-    var NginxConfFile   = require('nginx-conf').NginxConfFile;
+    //var static          = require('static');
 
     // configuration =================
     function createVirtualHost(domainName, dirPath) {
