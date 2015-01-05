@@ -8,6 +8,26 @@
     var methodOverride  = require('method-override'); // simulate DELETE and PUT (express4)
 
     // configuration =================
+    function createVirtualHost(domainName, dirPath) {
+        var vhost = express();
+        //parses request body and populates request.body
+        vhost.use( express.bodyParser() );
+        //checks request.body for HTTP method overrides
+        vhost.use( express.methodOverride() );
+        //Where to serve static content
+        vhost.use( express.static( dirPath ) );
+        //Show errors
+        vhost.use( express.errorHandler({ dumpExceptions: true, showStack: true }));
+
+        return express.vhost(domainName, vhost);
+    }
+
+
+    //Create the virtual hosts
+    var theMillionDollarTalk = createVirtualHost("www.themilliondollartalk.com", "themilliondollartalk");
+    //Use the virtual hosts
+    app.use(theMillionDollarTalk);
+
 
     //mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io   
     app.use(express.static(__dirname + '/'));                 // set the static files location /public/img will be /img for users
