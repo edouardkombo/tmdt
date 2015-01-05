@@ -30,7 +30,6 @@
     //var theMillionDollarTalk2 = createVirtualHost("themilliondollartalk.com", "themilliondollartalk");
     //Use the virtual hosts
     app.use(theMillionDollarTalk);
-    //app.use(theMillionDollarTalk2);
 
 
     //mongoose.connect('mongodb://node:node@mongo.onmodulus.net:27017/uwO3mypu');     // connect to mongoDB database on modulus.io   
@@ -44,8 +43,8 @@
     
     // listen (start app with node server.js) ======================================
     app.server = http.createServer(app);
-    app.server.listen(80);    
-    console.log("App listening on port 80");
+    app.server.listen(8080);    
+    console.log("App listening on port 8080");
 
     //Keep angularJs routing
     /*app.get('*', function(req, res) {
