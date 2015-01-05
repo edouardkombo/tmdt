@@ -14,7 +14,12 @@ var tmdtApp = angular.module('TheMillionDollarTalk', ['ng-translation','ngRoute'
         }).
         fallbackLanguage(userLang);
 }])
-.config(['$locationProvider', function($locationProvider) {
+.config(['$locationProvider', '$httpProvider', function($locationProvider, $httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        $httpProvider.defaults.withCredentials = true;
+        delete $httpProvider.defaults.headers.common["X-Requested-With"];
+        $httpProvider.defaults.headers.common["Accept"] = "application/json";
+        $httpProvider.defaults.headers.common["Content-Type"] = "application/json";        
         $locationProvider.hashPrefix('!');
     }
 ])
