@@ -42,8 +42,8 @@
     
     // listen (start app with node server.js) ======================================
     app.server = http.createServer(app);
-    app.server.listen(8080);    
-    console.log("App listening on port 8080");
+    app.server.listen(80);    
+    console.log("App listening on port 80");
 
     //Keep angularJs routing
     /*app.get('*', function(req, res) {
