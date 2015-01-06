@@ -1,13 +1,16 @@
 {
+    "site": {
+        "url": "http://themilliondollartalk.com"
+    },
     "head": {
-        "title": "#TheMillionDollarTalk - e-book collaboratif gratuit, écrit par des anonymes.",
-        "description": "#TheMillionDollarTalk est un e-book mensuel collaboratif dont l'histoire est écrite par les expériences coquines d'internautes anonymes.",
-        "keywords": "#TheMillionDollarTalk, the million dollar talk, e-book collaboratif, e-book gratuit, e-book mensuel, expériences anonymes, expériences coquines anonymes, histoires coquines anonymes"        
+        "title": "#TheMillionDollarTalk - Vengez-vous de vos relations d'un soir ou immortalisez-les au sein d'un e-book collaboratif.",
+        "description": "#TheMillionDollarTalk est un e-book mensuel collaboratif, écrit par des internautes anonymes désirant s'exprimer sur leurs relations éphémères.",
+        "keywords": "#TheMillionDollarTalk, the million dollar talk, se venger d'une relation, sex revenge, e-book collaboratif, e-book gratuit, e-book mensuel, expériences anonymes, expériences coquines anonymes, histoires coquines anonymes"        
     },    
     "menu": {
         "home": "Accueil",
         "aboutus": "A propos de nous",
-        "write": "Ecrire mon histoire",
+        "write": "Je raconte tout",
         "ebook": "E-books",
         "contact": "Contactez-nous",
         "chooseLanguage": "Choisissez votre langue:"
@@ -15,7 +18,7 @@
     "home" : {
         "title": "#TheMillionDollarTalk",
         "subTitle": "E-book collaboratif gratuit, écrit par vous et eux",
-        "tagLine": "Anonymement, contez-nous vos expériences coquines hors relations sérieuses. Retranscrivez votre histoire en l'adaptant à celle des autres, pour immortaliser vos propres moments éphémères au sein d'un roman collaboratif séduisant.",
+        "tagLine": "Anonymement, vengez-vous de vos relations d'un soir ou immortalisez-les dès aujourd'hui. Retranscrivez votre expérience en l'adaptant à celle des autres anonymes, et créez ainsi une histoire unique au déroulement inattendu.",
         "contributeLink": "Racontez-nous votre histoire maintenant!"
     },
     "aboutus" : {
@@ -28,12 +31,12 @@
     },
     "crowdwriting" : {
         "title": "Racontez-nous votre expérience",
-        "message": "Lisez les précédentes expériences de ce mois, puis continuez le fil de l'histoire.",
-        "message1": "Servez-vous de votre expérience personnelle, racontez les détails, adaptez.",        
+        "message": "Chaque expérience raconte un bout d'histoire, trouvez un fil conducteur.",
+        "message1": "Servez-vous de votre expérience personnelle, racontez les détails et adaptez.",        
         "message2": "Utilisez des hashtag pour marquer des lieux, objets et commerces (ex: #paris).",
         "message3": "Terminez en renseignant par '@xxx', votre @email (sera masqué), @age et @sexe.",        
         "write": "Comment s'appellait-il(elle)? Où a lieu la rencontre et l'acte? Avait-il(elle) une odeur particulière? Vous souvenez-vous d'un objet ou détail particulier (enseigne, marque, détail physique)? RACONTEZ-NOUS maintenant...!",        
-        "contribute": "Waouh çà fait du bien, je diffuse maintenant mon histoire!",        
+        "contribute": "Ajouter mon histoire, go!",        
         "success": "Merci de votre contribution, votre message apparaîtra dans quelque instants. Pour être informé(e) des nouveaux messages, abonnez-vous sur notre page Facebook ou Twitter.",
         "error": "Une erreur s'est produite, avez-vous renseigné(e) votre pseudo (ex: @nico78), votre âge (ex: @28) et votre sexe (ex: @homme)? Vous devez aussi renseigner au moins un hashtag (ex: #paris).",
         "emptyError": "Votre message est vide, racontez-nous votre expérience dans la zone de texte ci-dessus.",

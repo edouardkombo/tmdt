@@ -8,7 +8,23 @@
     var methodOverride  = require('method-override'); // simulate DELETE and PUT (express4)
     var errorhandler    = require('errorhandler');
     var vhost           = require('vhost');
+    var childProcess    = require( "child_process" );
+    var phantomjs       = require( "phantomjs" );
+    var binPath         = phantomjs.path; 
+    var ph              = '';
+    var requirejs       = require('requirejs');
     //var static          = require('static');
+
+    requirejs.config({
+        paths: {
+            angular: 'http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.3/angular.min'
+        },
+        shim: {
+            angular: {
+                exports: 'angular'
+            }
+        }
+    });
 
     // configuration =================
     function createVirtualHost(domainName, dirPath) {
@@ -47,6 +63,6 @@
     console.log("App listening on port 8080");
 
     //Keep angularJs routing
-    /*app.get('*', function(req, res) {
+    app.get('*', function(req, res) {
         res.sendfile('index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });*/  
+    });

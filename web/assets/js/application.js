@@ -12,7 +12,7 @@ var tmdtApp = angular.module('TheMillionDollarTalk', ['ng-translation','ngRoute'
             en: 'lang.en',
             fr: 'lang.fr'
         }).
-        fallbackLanguage(userLang);
+        fallbackLanguage('en');
 }])
 .config(['$locationProvider', '$httpProvider', function($locationProvider, $httpProvider) {
         $httpProvider.defaults.useXDomain = true;
