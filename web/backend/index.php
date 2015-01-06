@@ -4,6 +4,9 @@ error_reporting(E_ALL);
 ini_set('error_reporting', E_ALL);
 ini_set('display_errors', '1');
 header("Access-Control-Allow-Origin: http://themilliondollartalk.com");
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-MD5, X-Alt-Referer');
+header('Access-Control-Allow-Credentials: true');
 header('Content-Type: text/html; charset=utf-8');
 
 require '../../vendor/autoload.php';
