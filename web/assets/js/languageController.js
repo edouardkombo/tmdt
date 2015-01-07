@@ -1,11 +1,12 @@
 tmdtApp.controller('languageController', 
-    ['$scope', '$timeout', 'ngTranslation', function ($scope, $timeout, ngTranslation) {
-            $scope.currentLanguage = userLang;
-            
-            $scope.changeLanguage = function(language) {
-                ngTranslation.use(language);
-                userLang = language;
-                $scope.currentLanguage = language;
+    ['$scope', '$timeout', 'ngTranslation', '$routeParams', '$rootScope', '$location', function (
+                $scope, $timeout, ngTranslation, $routeParams, $rootScope, $location) {
+
+            $scope.currentLanguage  = $rootScope.language;
+
+            $scope.changeLanguage = function (language) {
+                $scope.currentLanguage  = language;
+                $location.path( "/"+language+"/index" );
             };
     }]
 );

@@ -22,7 +22,9 @@ tmdtApp.directive('scroller', function () {
 });
 
 tmdtApp.controller('writeController', 
-    ['$scope', '$http', 'ngTranslation', '$timeout', function ($scope, $http, ngTranslation, $timeout) {
+    ['$scope', '$http', 'ngTranslation', '$timeout', '$routeParams', 'changeSiteLanguage', '$rootScope', function ($scope, $http, ngTranslation, $timeout, $routeParams, changeSiteLanguage, $rootScope) {
+        
+        changeSiteLanguage.changeLang($scope, $routeParams, ngTranslation, $rootScope);
         
         //Focus on element
         document.getElementById("mdm").focus();
@@ -79,7 +81,7 @@ tmdtApp.controller('writeController',
                         $scope.result                   = '';
                         $scope.formData.thisForm        = false; 
                         if (data.success) {
-                            $scope.formData.mdm             = null;
+                            $scope.formData.mdm         = null;
                         }
                     }.bind(this);
                     $timeout(resetValues, 3000);                                       

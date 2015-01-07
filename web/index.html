@@ -34,13 +34,13 @@
 <body class="theme-invert">  
     
     <nav class="mainmenu">
-        <div class="container"ng-controller="languageController">
-            <div>
+        <div class="container" ng-controller="languageController">
+            <!-- <div class='chooseLanguage'>
                 {{ 'menu.chooseLanguage' | translate }}
                 <a href="" ng-click="changeLanguage('en')" ng-class="{'en':'bold', 'fr':'normal'}[currentLanguage]">en</a> | 
                 <a href="" ng-click="changeLanguage('fr')" ng-class="{'en':'normal', 'fr':'bold'}[currentLanguage]">fr</a>
                 <br/>                  
-            </div>
+            </div> -->
             <div class="dropdown">              
                 <button type="button" class="navbar-toggle parent open" data-toggle="dropdown">
                     <span class="icon-bar"></span> 
@@ -48,11 +48,11 @@
                     <span class="icon-bar"></span> 
                 </button>
                 <ul class="dropdown-menu" id="myDropdown" role="menu" aria-labelledby="dLabel">
-                    <li><a href="#!index" class="active">{{ 'menu.home' | translate }}</a></li>
-                    <li><a href="#!crowdwriting">{{ 'menu.write' | translate }}</a></li>                    
-                    <li><a href="#!ebooks">{{ 'menu.ebook' | translate }}</a></li>
-                    <li><a href="#!aboutus">{{ 'menu.aboutus' | translate }}</a></li>
-                    <li><a href="#!contact">{{ 'menu.contact' | translate }}</a></li>
+                    <li><a href="#!/{{ currentLanguage }}/index" class="active">{{ 'menu.home' | translate }}</a></li>
+                    <li><a href="#!/{{ currentLanguage }}/crowdwriting">{{ 'menu.write' | translate }}</a></li>                    
+                    <li><a href="#!/{{ currentLanguage }}/ebooks">{{ 'menu.ebook' | translate }}</a></li>
+                    <li><a href="#!/{{ currentLanguage }}/aboutus">{{ 'menu.aboutus' | translate }}</a></li>
+                    <li><a href="#!/{{ currentLanguage }}/contact">{{ 'menu.contact' | translate }}</a></li>
                 </ul>
             </div>
         </div>

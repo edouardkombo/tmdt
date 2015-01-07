@@ -1,10 +1,11 @@
 'use strict';
-var userLang        = navigator.language || navigator.userLanguage;
-var paginationStep  = 10;
-var phpUrl          = 'http://backend.themilliondollartalk.com';
+var userLang            = navigator.language || navigator.userLanguage;
+var availableLanguages  = ['fr', 'en'];
+var paginationStep      = 10;
+var phpUrl              = 'http://backend.themilliondollartalk.com';
 
 var tmdtApp = angular.module('TheMillionDollarTalk', ['ng-translation','ngRoute','monospaced.elastic'])
-.config(['ngTranslationProvider', function(ngTranslationProvider) {
+.config(['ngTranslationProvider', '$routeProvider','$locationProvider', '$httpProvider', function(ngTranslationProvider, $routeProvider, $locationProvider, $httpProvider) {
     ngTranslationProvider.
         setDirectory('assets/static').
         setFilesSuffix('.json').
@@ -13,43 +14,67 @@ var tmdtApp = angular.module('TheMillionDollarTalk', ['ng-translation','ngRoute'
             fr: 'lang.fr'
         }).
         fallbackLanguage('en');
-}])
-.config(['$locationProvider', '$httpProvider', function($locationProvider, $httpProvider) {
+
         $httpProvider.defaults.useXDomain = true;
         $httpProvider.defaults.withCredentials = true;
         delete $httpProvider.defaults.headers.common["X-Requested-With"];
         $httpProvider.defaults.headers.common["Accept"] = "application/json";
         $httpProvider.defaults.headers.common["Content-Type"] = "application/json";        
         $locationProvider.hashPrefix('!');
-    }
-])
-.config(['$routeProvider', function($routeProvider) {                  
+
+       
     $routeProvider.
-        when('/index', {
+        when('/:language/index', {
             templateUrl: '/partials/home.html',
             controller: 'homeController' 
-        }).
-        when('/aboutus', {
+        }).                
+        when('/:language/aboutus', {
             templateUrl: '/partials/aboutus.html',
             controller: 'aboutController'
         }).                
-        when('/crowdwriting', {
+        when('/:language/crowdwriting', {
             templateUrl: '/partials/crowdwriting.html',
             controller: 'writeController' 
         }).              
-        when('/ebooks', {
+        when('/:language/ebooks', {
             templateUrl: '/partials/ebooks.html',
             controller: 'ebookController'
         }).
-        when('/contact', {
+        when('/:language/contact', {
             templateUrl: '/partials/contact.html',
             controller: 'contactController'
         }).
         otherwise({
-            redirectTo: '/index'
-        });
-}]);
+            redirectTo: '/'+userLang+'/index'
+        });       
+}])
+.service('changeSiteLanguage', function () {
+    return {
+        changeLang: function($scope, $routeParams, ngTranslation, $rootScope) {
+            var userLanguage        = $routeParams.language;
+            $rootScope.language     = userLanguage;
+            ngTranslation.use(userLanguage);
+            
+            var appElement = document.querySelector('[ng-app=TheMillionDollarTalk]');
+            var appScope = angular.element(appElement).scope();
+            var controllerScope = appScope.$$childHead;            
+            controllerScope.currentLanguage = $rootScope.language;
+        }
+    };     
+})
+;
 
-tmdtApp.run(function(ngTranslation, $location) {
-    ngTranslation.use(userLang);
+tmdtApp.run(function(ngTranslation, $location, $rootScope) {  
+    var language        = $location.url().split('/');
+    var trueLanguage    = '';
+
+    if (availableLanguages.indexOf(language[1]) >= 0) {
+        trueLanguage = language[1];
+    } else {
+        trueLanguage = "en";
+    }
+    
+    $rootScope.language = trueLanguage;
+    console.log($rootScope.language + ' => first');
+    ngTranslation.use(trueLanguage); 
 });

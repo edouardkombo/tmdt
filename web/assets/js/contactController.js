@@ -1,4 +1,7 @@
 tmdtApp.controller('contactController', 
-    ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) { 
+    ['$scope', '$http', '$timeout', 'changeSiteLanguage', '$routeParams', 'ngTranslation', '$rootScope', function (
+                $scope, $http, $timeout, changeSiteLanguage, $routeParams, ngTranslation, $rootScope) { 
+            
+            changeSiteLanguage.changeLang($scope, $routeParams, ngTranslation, $rootScope);
     }]
 );
