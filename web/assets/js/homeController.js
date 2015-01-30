@@ -4,5 +4,7 @@ tmdtApp.controller('homeController',
             
             changeSiteLanguage.changeLang($scope, $routeParams, ngTranslation, $rootScope);
             $scope.currentLanguage = $rootScope.language;
+            
+            $scope.htmlReady();            
     }]
 );

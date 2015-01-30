@@ -91,7 +91,9 @@ tmdtApp.controller('writeController',
                     $scope.result                   = ngTranslation.get(userLang).crowdwriting.serverError;
                 });
             }
-        };               
+        };
+        
+        $scope.htmlReady();
     }]
 );
 

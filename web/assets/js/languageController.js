@@ -8,5 +8,7 @@ tmdtApp.controller('languageController',
                 $scope.currentLanguage  = language;
                 $location.path( "/"+language+"/index" );
             };
+            
+            $scope.htmlReady();
     }]
 );

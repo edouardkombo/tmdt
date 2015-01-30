@@ -4,7 +4,7 @@ var availableLanguages  = ['fr', 'en'];
 var paginationStep      = 10;
 var phpUrl              = 'http://backend.themilliondollartalk.com';
 
-var tmdtApp = angular.module('TheMillionDollarTalk', ['ng-translation','ngRoute','monospaced.elastic'])
+var tmdtApp = angular.module('TheMillionDollarTalk', ['ng-translation','ngRoute','monospaced.elastic', 'seo'])
 .config(['ngTranslationProvider', '$routeProvider','$locationProvider', '$httpProvider', function(ngTranslationProvider, $routeProvider, $locationProvider, $httpProvider) {
     ngTranslationProvider.
         setDirectory('assets/static').
