@@ -72,20 +72,21 @@ body {
     font-weight: normal;
 }
 .mainmenu .dropdown-menu {
-	top: -14em;
-	left: 0px;
-	font-size: 13px;
-	padding:0;
-	background:none;
-	border:0 none;
-	border-radius: 2px;
-	-webkit-box-shadow: none;
-	box-shadow: none;
-	display:block;
-	opacity:0;
-	-webkit-transition: all .45s;
-	   -moz-transition: all .45s;
-	        transition: all .45s;
+    top: -14em;
+    left: 0px;
+    font-size: 13px;
+    padding:0;
+    background:none;
+    border:0 none;
+    border-radius: 2px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display:block;
+    opacity:0;
+    margin-bottom: 14em;
+    -webkit-transition: all .45s;
+       -moz-transition: all .45s;
+            transition: all .45s;
 }
 .mainmenu .dropdown-menu .active { 
 	font-weight:bold;
@@ -111,10 +112,6 @@ body {
 
 .chooseLanguage {
     margin-bottom: 10px;
-}
-
-#myDropdown {
-    margin-bottom: 20px;
 }
 
 /********************************************************/
