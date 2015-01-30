@@ -18,8 +18,8 @@
     "home" : {
         "title": "#TheMillionDollarTalk",
         "subTitle": "Free collaborative e-book, written by you and them",
-        "tagLine": "Anonymously, take revenge over your one night-stand relationships by immortalizing them today. Retype your experience by adapting it to that of others anonymous, and thus create a unique story with an unexpected progress.",
-        "contributeLink": "Tell us your experience!"
+        "tagLine": "Take revenge or adulate anonymusly your one night-stand relationships, by entrusting them to us and the world. We publish every month your experiences, as a free e-book, to the enticing history and unexpected progress.",
+        "contributeLink": "I have a story to entrust now !"
     },
     "aboutus" : {
         "title": "About us",
@@ -31,12 +31,11 @@
     },
     "crowdwriting" : {
         "title": "Tell us your experience",
-        "message": "Each experience tells a piece of story, find a thread.",
-        "message1": "Use your own experience, tell the details and adapt.",        
-        "message2": "Use hashtags to mark places, objects and retails (ex: #paris).",
-        "message3": "Finish by filling in by '@xxx', your @email (will be hidden), @age and @gender.",        
+        "message": "In every possible details, preserving the anonymity of your characters.",      
+        "message1": "Use hashtags to identify places, objects and retails (ex: #paris, #dieselJean).",
+        "message2": "Finish by filling in by '@xxx', your @email (hidden), @age and @gender.",        
         "write": "What's his(her) name? Where did you meet and act? Does he(she) have a pecullar smell? Do you remember a particular detail or object (brand, mark, physical detail)? Tell us now...!",        
-        "contribute": "Add my story, go",        
+        "contribute": "Done, entrust my story!",        
         "success": "Thank you for your contribution, your message will appear in a few moment. To be notified of new contributions, subscribe on our Facebook or Twitter page.",
         "error": "An error has occured, Have you filled in your nickname (ex: @nico78), your age (ex: @28) and your gender (ex: @female)? You must also specify at least one hashtag (ex: #paris).",
         "emptyError": "Your message is empty, tell us your experience in the text area above.",

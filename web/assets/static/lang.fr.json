@@ -18,8 +18,8 @@
     "home" : {
         "title": "#TheMillionDollarTalk",
         "subTitle": "E-book collaboratif gratuit, écrit par vous et eux",
-        "tagLine": "Anonymement, vengez-vous de vos relations d'un soir en les immortalisant dès aujourd'hui. Retranscrivez votre expérience en l'adaptant à celle des autres anonymes, et créez ainsi une histoire unique au déroulement inattendu.",
-        "contributeLink": "Racontez-nous votre histoire!"
+        "tagLine": "Vengez-vous ou adulez anonymement vos relations d'un soir, en les confiant à nous et au monde entier. Nous publions chaque mois vos expériences, sous forme d'un e-book gratuit, à l'histoire alléchante et au déroulement inattendu.",
+        "contributeLink": "J'ai une histoire à confier maintenant !"
     },
     "aboutus" : {
         "title": "A propos de nous",
@@ -31,12 +31,11 @@
     },
     "crowdwriting" : {
         "title": "Racontez-nous votre expérience",
-        "message": "Chaque expérience raconte un bout d'histoire, trouvez un fil conducteur.",
-        "message1": "Servez-vous de votre expérience personnelle, racontez les détails et adaptez.",        
-        "message2": "Utilisez des hashtag pour marquer des lieux, objets et commerces (ex: #paris).",
-        "message3": "Terminez en renseignant par '@xxx', votre @email (sera masqué), @age et @sexe.",        
+        "message": "Dans les moindres détails possibles, en préservant l'anonymat de vos personnages.",      
+        "message1": "Utilisez des hashtag pour identifier des lieux, objets et commerces (ex: #paris, #jeanDiesel).",
+        "message2": "Terminez en renseignant par '@xxx', vos @email (masqué), @age et @sexe.",        
         "write": "Comment s'appellait-il(elle)? Où a lieu la rencontre et l'acte? Avait-il(elle) une odeur particulière? Vous souvenez-vous d'un objet ou détail particulier (enseigne, marque, détail physique)? RACONTEZ-NOUS maintenant...!",        
-        "contribute": "Ajouter mon histoire, go!",        
+        "contribute": "Fait, confier mon histoire !",        
         "success": "Merci de votre contribution, votre message apparaîtra dans quelque instants. Pour être informé(e) des nouveaux messages, abonnez-vous sur notre page Facebook ou Twitter.",
         "error": "Une erreur s'est produite, avez-vous renseigné(e) votre pseudo (ex: @nico78), votre âge (ex: @28) et votre sexe (ex: @homme)? Vous devez aussi renseigner au moins un hashtag (ex: #paris).",
         "emptyError": "Votre message est vide, racontez-nous votre expérience dans la zone de texte ci-dessus.",

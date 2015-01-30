@@ -20,6 +20,10 @@ body {
 	font-weight: normal;
 }
 
+.dropdown-backdrop {
+    width: 0px;
+    display: none;
+}
 
 /********************************************************/
 /*                    Navigation bar                    */
