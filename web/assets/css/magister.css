@@ -83,7 +83,6 @@ body {
     box-shadow: none;
     display:block;
     opacity:0;
-    margin-bottom: 34em;
     -webkit-transition: all .45s;
        -moz-transition: all .45s;
             transition: all .45s;
@@ -92,7 +91,7 @@ body {
 	font-weight:bold;
 }
 .mainmenu .open .dropdown-menu { 
-	top:2px;
+	top:-15px;
 	opacity:1;
 }
 .mainmenu .dropdown-menu a { 
